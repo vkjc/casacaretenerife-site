@@ -1,0 +1,16 @@
+# Зависимости Node.js (если есть)
+node_modules/
+npm-debug.log*
+
+# Кэш и локальные настройки Wrangler
+.wrangler/
+.dev.vars
+.env
+
+# Временные папки тестов
+tests/.build/
+
+# Системный мусор (macOS / Windows)
+.DS_Store
+Thumbs.db
+desktop.ini

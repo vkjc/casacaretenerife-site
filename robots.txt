@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /admin.html
+Disallow: /api/
+Disallow: /grid.js
+
+Sitemap: https://casacaretenerife.pages.dev/sitemap.xml

@@ -1,0 +1,8 @@
+name = "casacaretenerife"
+compatibility_date = "2024-01-01"
+pages_build_output_dir = "."
+
+[[d1_databases]]
+binding = "DB"
+database_name = "casacaretenerife-leads"
+database_id = "aeacfb80-8ad6-4854-999c-9d3d4278d0cc"

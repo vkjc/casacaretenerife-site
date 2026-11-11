@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Casa Care — CRM</title>
+  <style>
+    :root {
+      --teal: #0d5c63; --teal-dark: #08474d; --teal-light: #e6f3f4;
+      --sand: #f7f3eb; --line: #e2ddd3; --ink: #1c1c1c; --muted: #5c5c5c;
+      --success: #2a7d4f; --danger: #b42318;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, -apple-system, sans-serif; background: var(--sand); color: var(--ink); padding: 20px; }
+    .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+    h1 { font-size: 24px; color: var(--teal-dark); }
+    .filters { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+    .filter-btn { padding: 8px 16px; border: 1px solid var(--line); background: #fff; border-radius: 8px; cursor: pointer; font-weight: 600; color: var(--muted); transition: all 0.2s; }
+    .filter-btn.active { background: var(--teal); color: #fff; border-color: var(--teal); }
+    .filter-btn:hover:not(.active) { background: var(--teal-light); }
+    .table-wrap { background: #fff; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; text-align: left; font-size: 14px; }
+    th { background: var(--teal-light); color: var(--teal-dark); padding: 12px; font-weight: 600; white-space: nowrap; }
+    td { padding: 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+    tr:hover { background: #fafbf9; }
+    
+    select, input[type="date"], textarea { width: 100%; padding: 6px; border: 1px solid var(--line); border-radius: 6px; font-family: inherit; font-size: 13px; }
+    select:focus, input:focus, textarea:focus { outline: none; border-color: var(--teal); }
+    .btn-save { padding: 6px 12px; background: var(--teal); color: #fff; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; margin-top: 6px; width: 100%; }
+    .btn-save:hover { background: var(--teal-dark); }
+    .btn-save.saved { background: var(--success); }
+    
+    .contact-info div { margin-bottom: 4px; }
+    .contact-info a { color: var(--teal); text-decoration: none; }
+    .geo-flag { font-size: 16px; margin-right: 4px; }
+    
+    .error-box { background: #fee2e2; color: var(--danger); padding: 16px; border-radius: 8px; margin: 20px 0; border: 1px solid #f87171; font-weight: 500; }
+    .error-box pre { margin-top: 8px; font-size: 12px; background: #fff; padding: 8px; border-radius: 4px; overflow-x: auto; color: #333; white-space: pre-wrap; }
+    
+    @media (max-width: 768px) {
+      th, td { padding: 8px; font-size: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Заявки (CRM)</h1>
+    <button class="filter-btn active" onclick="location.reload()">Обновить</button>
+  </div>
+  <div class="filters">
+    <button class="filter-btn active" onclick="filterLeads('all', this)">Все</button>
+    <button class="filter-btn" onclick="filterLeads('today', this)">На сегодня</button>
+    <button class="filter-btn" onclick="filterLeads('tomorrow', this)">На завтра</button>
+    <button class="filter-btn" onclick="filterLeads('week', this)">На неделю</button>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Дата / Гео</th>
+          <th>Клиент / Контакты</th>
+          <th>Объект / Услуги</th>
+          <th>Статус</th>
+          <th>Действие / Дата</th>
+          <th>Заметки</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="leadsTable">
+        <tr><td colspan="7" style="text-align:center; padding:20px;">Загрузка...</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <script>
+    let allLeads = [];
+    let currentFilter = 'all';
+
+    function getFlagEmoji(countryCode) {
+      if (!countryCode) return '🌍';
+      return countryCode.toUpperCase().replace(/./g, char => String.fromCodePoint(char.charCodeAt(0) + 127397));
+    }
+
+    async function loadLeads() {
+      try {
+        const res = await fetch('/api/leads');
+        
+        if (!res.ok) {
+            throw new Error(`HTTP error! Status: ${res.status} ${res.statusText}`);
+        }
+        
+        const contentType = res.headers.get("content-type");
+        if (!contentType || !contentType.includes("application/json")) {
+            const text = await res.text();
+            throw new Error(`Сервер вернул не JSON, а: ${contentType}\n\nОтвет:\n${text.slice(0, 100)}...\n\nПроверьте _redirects и Cloudflare Access.`);
+        }
+
+        const data = await res.json();
+        allLeads = data.leads || [];
+        renderTable();
+      } catch (e) {
+        document.getElementById('leadsTable').innerHTML = `
+          <tr>
+            <td colspan="7">
+              <div class="error-box">
+                <div>❌ Ошибка загрузки данных</div>
+                <pre>${e.message}</pre>
+              </div>
+            </td>
+          </tr>
+        `;
+      }
+    }
+
+    function filterLeads(type, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      currentFilter = type;
+      renderTable();
+    }
+
+    function renderTable() {
+      const tbody = document.getElementById('leadsTable');
+      const today = new Date(); today.setHours(0,0,0,0);
+      const tomorrow = new Date(today); tomorrow.setDate(tomorrow.getDate() + 1);
+      const nextWeek = new Date(today); nextWeek.setDate(nextWeek.getDate() + 7);
+
+      let filtered = allLeads.filter(lead => {
+        if (currentFilter === 'all') return true;
+        if (!lead.next_action_date) return false;
+        const actionDate = new Date(lead.next_action_date); actionDate.setHours(0,0,0,0);
+        if (currentFilter === 'today') return actionDate.getTime() === today.getTime();
+        if (currentFilter === 'tomorrow') return actionDate.getTime() === tomorrow.getTime();
+        if (currentFilter === 'week') return actionDate >= today && actionDate <= nextWeek;
+        return true;
+      });
+
+      if (filtered.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding:20px; color:var(--muted)">Нет заявок по этому фильтру</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = filtered.map(lead => {
+        const d = new Date(lead.created_at);
+        const dateStr = d.toLocaleDateString('ru-RU', { day: '2-digit', month: '2-digit' });
+        const timeStr = d.toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
+        const geo = lead.geo_country ? `${getFlagEmoji(lead.geo_country)} ${lead.geo_city || lead.geo_country}` : '🌍 Неизвестно';
+        const status = lead.status || 'new';
+        const nextAct = lead.next_action || '';
+        const nextDate = lead.next_action_date || '';
+        const notes = lead.notes || '';
+
+        return `
+          <tr data-id="${lead.id}">
+            <td>
+              <div style="font-weight:600; margin-bottom:4px">${dateStr} ${timeStr}</div>
+              <div style="font-size:12px; color:var(--muted)">${geo}</div>
+            </td>
+            <td>
+              <div style="font-weight:600; font-size:15px; margin-bottom:4px">${lead.name}</div>
+              <div class="contact-info" style="font-size:12px;">
+                ${lead.email ? `<div>✉️ <a href="mailto:${lead.email}">${lead.email}</a></div>` : ''}
+                ${lead.phone ? `<div>📱 <a href="https://wa.me/${lead.phone.replace(/[^0-9]/g, '')}" target="_blank">${lead.phone}</a></div>` : ''}
+                ${lead.telegram ? `<div>✈️ ${lead.telegram}</div>` : ''}
+              </div>
+            </td>
+            <td>
+              <div style="font-weight:600">${lead.town} (${lead.tier})</div>
+              <div style="font-size:12px; color:var(--muted); margin-top:4px; max-width:200px; white-space:normal;">
+                ${lead.obj_type} · ${(lead.services || '').split(',').length} опций
+              </div>
+            </td>
+            <td>
+              <select onchange="updateLead('${lead.id}', 'status', this.value)">
+                <option value="new" ${status === 'new' ? 'selected' : ''}>Новая</option>
+                <option value="contacted" ${status === 'contacted' ? 'selected' : ''}>На связи</option>
+                <option value="waiting" ${status === 'waiting' ? 'selected' : ''}>Ждем ответа</option>
+                <option value="won" ${status === 'won' ? 'selected' : ''}>Сделка</option>
+                <option value="lost" ${status === 'lost' ? 'selected' : ''}>Отказ</option>
+              </select>
+            </td>
+            <td>
+              <select onchange="updateLead('${lead.id}', 'next_action', this.value)" style="margin-bottom:6px;">
+                <option value="" ${nextAct === '' ? 'selected' : ''}>— Нет —</option>
+                <option value="call" ${nextAct === 'call' ? 'selected' : ''}>📞 Позвонить</option>
+                <option value="visit" ${nextAct === 'visit' ? 'selected' : ''}>🏠 Визит</option>
+                <option value="message" ${nextAct === 'message' ? 'selected' : ''}>💬 Написать</option>
+                <option value="reminder" ${nextAct === 'reminder' ? 'selected' : ''}>⏰ Напомнить</option>
+              </select>
+              <input type="date" value="${nextDate}" onchange="updateLead('${lead.id}', 'next_action_date', this.value)">
+            </td>
+            <td>
+              <textarea rows="2" placeholder="Заметки..." onchange="updateLead('${lead.id}', 'notes', this.value)">${notes}</textarea>
+            </td>
+            <td style="width: 80px;">
+              <button class="btn-save" onclick="this.classList.add('saved'); this.textContent='✓';">ОК</button>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    async function updateLead(id, field, value) {
+      const row = document.querySelector(`tr[data-id="${id}"]`);
+      if (row) {
+        const btn = row.querySelector('.btn-save');
+        btn.classList.add('saved');
+        btn.textContent = '✓';
+        setTimeout(() => btn.classList.remove('saved'), 1000);
+      }
+      const lead = allLeads.find(l => l.id === id);
+      if (lead) lead[field] = value;
+      const payload = {
+        id: lead.id,
+        status: lead.status,
+        notes: lead.notes,
+        next_action: lead.next_action,
+        next_action_date: lead.next_action_date
+      };
+      try {
+        await fetch('/api/leads', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+      } catch (e) {
+        console.error('Ошибка сохранения', e);
+      }
+    }
+
+    loadLeads();
+  </script>
+</body>
+</html>
