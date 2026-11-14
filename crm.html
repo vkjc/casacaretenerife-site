@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Casa Care — CRM</title>
+  <style>
+    :root {
+      --teal: #0d5c63; --teal-dark: #08474d; --teal-light: #e6f3f4;
+      --sand: #f7f3eb; --line: #e2ddd3; --ink: #1c1c1c; --muted: #5c5c5c;
+      --success: #2a7d4f; --danger: #b42318;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, -apple-system, sans-serif; background: var(--sand); color: var(--ink); padding: 20px; }
+    .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px; }
+    h1 { font-size: 24px; color: var(--teal-dark); }
+    .filters { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+    .filter-btn { padding: 8px 16px; border: 1px solid var(--line); background: #fff; border-radius: 8px; cursor: pointer; font-weight: 600; color: var(--muted); transition: all 0.2s; font-size: 13px; }
+    .filter-btn.active { background: var(--teal); color: #fff; border-color: var(--teal); }
+    .filter-btn:hover:not(.active) { background: var(--teal-light); }
+    .table-wrap { background: #fff; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); overflow-x: auto; margin-bottom: 20px; }
+    table { width: 100%; border-collapse: collapse; text-align: left; font-size: 13px; }
+    th { background: var(--teal-light); color: var(--teal-dark); padding: 10px; font-weight: 600; white-space: nowrap; }
+    td { padding: 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+    tr:hover { background: #fafbf9; }
+    select, input[type="date"], textarea, input[type="text"] { width: 100%; padding: 6px; border: 1px solid var(--line); border-radius: 6px; font-family: inherit; font-size: 13px; }
+    select:focus, input:focus, textarea:focus { outline: none; border-color: var(--teal); }
+    .btn-save { padding: 6px 12px; background: var(--teal); color: #fff; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; margin-top: 6px; width: 100%; }
+    .btn-save:hover { background: var(--teal-dark); }
+    .contact-info div { margin-bottom: 4px; }
+    .contact-info a { color: var(--teal); text-decoration: none; }
+    .geo-flag { font-size: 14px; margin-right: 4px; }
+    .badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 600; text-transform: uppercase; }
+    .badge-variant { background: #e3f2fd; color: #1565c0; }
+    .badge-source { background: #f3e5f5; color: #7b1fa2; }
+    .error-box { background: #fee2e2; color: var(--danger); padding: 16px; border-radius: 8px; margin: 20px 0; border: 1px solid #f87171; font-weight: 500; }
+    .error-box pre { margin-top: 8px; font-size: 12px; background: #fff; padding: 8px; border-radius: 4px; overflow-x: auto; color: #333; white-space: pre-wrap; }
+    .admin-panel { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 20px; margin-bottom: 20px; }
+    .admin-panel h2 { margin-top: 0; font-size: 18px; color: var(--teal-dark); margin-bottom: 15px; }
+    .variant-row { display: flex; gap: 12px; align-items: center; margin-bottom: 10px; flex-wrap: wrap; }
+    .variant-row label { font-weight: 600; color: var(--muted); }
+    .variant-row input[type="number"] { width: 80px; padding: 6px; border: 1px solid var(--line); border-radius: 6px; }
+    .variant-row input[type="checkbox"] { width: auto; margin-right: 6px; }
+    .btn-save-variants { padding: 10px 20px; background: var(--teal); color: #fff; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; margin-top: 10px; }
+    .btn-save-variants:hover { background: var(--teal-dark); }
+    .variant-summary { font-size: 13px; color: var(--muted); margin-top: 8px; }
+    .variant-summary.ok { color: var(--success); font-weight: 600; }
+    .variant-summary.err { color: var(--danger); font-weight: 600; }
+    @media (max-width: 768px) {
+      th, td { padding: 8px; font-size: 11px; }
+      .admin-panel { padding: 15px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Заявки (CRM)</h1>
+    <div>
+      <button class="filter-btn active" onclick="location.reload()">Обновить</button>
+      <button class="filter-btn" onclick="openAdmin()">A/B настройки</button>
+    </div>
+  </div>
+
+  <div class="filters">
+    <button class="filter-btn active" onclick="filterLeads('all', this)">Все</button>
+    <button class="filter-btn" onclick="filterLeads('today', this)">На сегодня</button>
+    <button class="filter-btn" onclick="filterLeads('tomorrow', this)">На завтра</button>
+    <button class="filter-btn" onclick="filterLeads('week', this)">На неделю</button>
+  </div>
+
+  <div class="filters" style="margin-bottom:10px;">
+    <label style="font-weight:600; color:var(--muted); font-size:13px;">Вариант:</label>
+    <button class="filter-btn" onclick="filterVariant('all', this)">Все</button>
+    <button class="filter-btn" onclick="filterVariant('variant-a', this)">А</button>
+    <button class="filter-btn" onclick="filterVariant('variant-b', this)">Б</button>
+    <label style="font-weight:600; color:var(--muted); font-size:13px; margin-left:10px;">Источник:</label>
+    <button class="filter-btn" onclick="filterSource('all', this)">Все</button>
+    <button class="filter-btn" onclick="filterSource('google', this)">Google</button>
+    <button class="filter-btn" onclick="filterSource('facebook', this)">Facebook</button>
+    <button class="filter-btn" onclick="filterSource('whatsapp', this)">WhatsApp</button>
+    <button class="filter-btn" onclick="filterSource('telegram', this)">Telegram</button>
+    <button class="filter-btn" onclick="filterSource('viber', this)">Viber</button>
+    <button class="filter-btn" onclick="filterSource('manual', this)">Ручной</button>
+  </div>
+
+  <div class="admin-panel" id="adminPanel" style="display:none;">
+    <h2>Настройка распределения трафика (A/B/n)</h2>
+    <p style="font-size:13px; color:var(--muted); margin-bottom:15px;">Задайте % для каждого активного варианта. Сумма процентов активных вариантов должна быть равна 100.</p>
+    <div id="variantsList"></div>
+    <div class="variant-summary" id="variantSumm"></div>
+    <button class="btn-save-variants" onclick="saveVariants()">Сохранить распределение</button>
+    <div id="variantSaveMsg" style="margin-top:10px; font-size:13px;"></div>
+  </div>
+    .btn-save.saved { background: var(--success); }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Заявки (CRM)</h1>
+    <div>
+      <button class="filter-btn active" onclick="location.reload()">Обновить</button>
+      <button class="filter-btn" onclick="openAdmin()">A/B настройки</button>
+    </div>
+  </div>
+
+  <div class="filters">
+    <button class="filter-btn active" onclick="filterLeads('all', this)">Все</button>
+    <button class="filter-btn" onclick="filterLeads('today', this)">На сегодня</button>
+    <button class="filter-btn" onclick="filterLeads('tomorrow', this)">На завтра</button>
+    <button class="filter-btn" onclick="filterLeads('week', this)">На неделю</button>
+  </div>
+
+  <div class="filters" style="margin-bottom:10px;">
+    <label style="font-weight:600; color:var(--muted); font-size:13px;">Вариант:</label>
+    <button class="filter-btn" onclick="filterVariant('all', this)">Все</button>
+    <button class="filter-btn" onclick="filterVariant('variant-a', this)">А</button>
+    <button class="filter-btn" onclick="filterVariant('variant-b', this)">Б</button>
+    <label style="font-weight:600; color:var(--muted); font-size:13px; margin-left:10px;">Источник:</label>
+    <button class="filter-btn" onclick="filterSource('all', this)">Все</button>
+    <button class="filter-btn" onclick="filterSource('google', this)">Google</button>
+    <button class="filter-btn" onclick="filterSource('facebook', this)">Facebook</button>
+    <button class="filter-btn" onclick="filterSource('whatsapp', this)">WhatsApp</button>
+    <button class="filter-btn" onclick="filterSource('telegram', this)">Telegram</button>
+    <button class="filter-btn" onclick="filterSource('viber', this)">Viber</button>
+    <button class="filter-btn" onclick="filterSource('manual', this)">Ручной</button>
+  </div>
+
+  <div class="admin-panel" id="adminPanel" style="display:none;">
+    <h2>Настройка распределения трафика (A/B/n)</h2>
+    <p style="font-size:13px; color:var(--muted); margin-bottom:15px;">Задайте % для каждого активного варианта. Сумма процентов активных вариантов должна быть равна 100.</p>
+    <div id="variantsList"></div>
+    <div class="variant-summary" id="variantSumm"></div>
+    <button class="btn-save-variants" onclick="saveVariants()">Сохранить распределение</button>
+    <div id="variantSaveMsg" style="margin-top:10px; font-size:13px;"></div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Дата / Гео</th>
+          <th>Клиент / Контакты</th>
+          <th>Объект / Услуги</th>
+          <th>Вариант</th>
+          <th>Источник</th>
+          <th>Статус</th>
+          <th>Действие / Дата</th>
+          <th>Заметки</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="leadsTable">
+        <tr><td colspan="9" style="text-align:center; padding:20px;">Загрузка...</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    let allLeads = [];
+    let currentFilter = 'all';
+    let currentVariant = 'all';
+    let currentSource = 'all';
+    let variantsConfig = [];
+
+    async function loadLeads() {
+      let url = '/api/leads';
+      const params = [];
+      if (currentVariant !== 'all') params.push(`ab_variant=${encodeURIComponent(currentVariant)}`);
+      if (currentSource !== 'all') params.push(`source=${encodeURIComponent(currentSource)}`);
+      if (params.length) url += '?' + params.join('&');
+      try {
+        const res = await fetch(url);
+        const data = await res.json();
+        allLeads = data.leads || [];
+        renderTable();
+      } catch (e) {
+        document.getElementById('leadsTable').innerHTML = `<tr><td colspan="9" style="color:var(--danger);">Ошибка загрузки: ${e.message}</td></tr>`;
+      }
+    }
+
+    async function loadVariants() {
+      try {
+        const res = await fetch('/api/ab-config');
+        const data = await res.json();
+        variantsConfig = data.variants || [];
+        renderVariantsAdmin();
+      } catch (e) {
+        console.error('Ошибка загрузки вариантов', e);
+      }
+    }
+
+    function renderVariantsAdmin() {
+      const list = document.getElementById('variantsList');
+      const summ = document.getElementById('variantSumm');
+      list.innerHTML = '';
+      let activeSum = 0;
+      variantsConfig.forEach(v => {
+        const isActive = v.is_active === 1 || v.is_active === true;
+        if (isActive) activeSum += parseInt(v.traffic_percent) || 0;
+        const row = document.createElement('div');
+        row.className = 'variant-row';
+        row.innerHTML = `
+          <label>${escHtml(v.name || v.variant_id)} <span style="color:var(--muted); font-weight:normal;">(${v.variant_id})</span></label>
+          <input type="checkbox" ${isActive ? 'checked' : ''} onchange="toggleVariant('${v.variant_id}', this)">
+          <label>%</label>
+          <input type="number" value="${v.traffic_percent || 0}" min="0" max="100" onchange="updateVariantPercent('${v.variant_id}', this)" data-id="${v.variant_id}">
+          <label>Модуль:</label>
+          <span style="font-size:11px; color:var(--muted); margin-left:4px;">${escHtml(v.form_module || '')}</span>
+        `;
+        list.appendChild(row);
+      });
+      summ.className = activeSum === 100 ? 'variant-summary ok' : 'variant-summary err';
+      summ.textContent = `Сумма активных: ${activeSum}% ${activeSum === 100 ? '(OK)' : '(должно быть 100%)'}`;
+    }
+
+    function toggleVariant(id, checkbox) {
+      const v = variantsConfig.find(x => x.variant_id === id);
+      if (v) v.is_active = checkbox.checked ? 1 : 0;
+      renderVariantsAdmin();
+    }
+
+    function updateVariantPercent(id, input) {
+      const v = variantsConfig.find(x => x.variant_id === id);
+      if (v) v.traffic_percent = parseInt(input.value) || 0;
+      renderVariantsAdmin();
+    }
+
+    async function saveVariants() {
+      const msg = document.getElementById('variantSaveMsg');
+      msg.textContent = '';
+      try {
+        const res = await fetch('/api/ab-config', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(variantsConfig)
+        });
+        const data = await res.json();
+        if (data.ok) {
+          msg.textContent = 'Сохранено.';
+          msg.style.color = 'var(--success)';
+          loadVariants();
+        } else {
+          msg.textContent = data.error || 'Ошибка';
+          msg.style.color = 'var(--danger)';
+        }
+      } catch (e) {
+        msg.textContent = 'Ошибка сохранения: ' + e.message;
+        msg.style.color = 'var(--danger)';
+      }
+    }
+
+    function openAdmin() {
+      const panel = document.getElementById('adminPanel');
+      panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+      if (panel.style.display === 'block') loadVariants();
+    }
+
+    function escHtml(s) {
+      return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+    function filterLeads(filter, btn) {
+      currentFilter = filter;
+      document.querySelectorAll('.filters > .filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const now = new Date();
+      let dateFrom = null, dateTo = null;
+      if (filter === 'today') {
+        dateFrom = now.toISOString().split('T')[0];
+        dateTo = dateFrom;
+      } else if (filter === 'tomorrow') {
+        const t = new Date(now); t.setDate(t.getDate() + 1);
+        dateFrom = t.toISOString().split('T')[0];
+        dateTo = dateFrom;
+      } else if (filter === 'week') {
+        dateFrom = now.toISOString().split('T')[0];
+      }
+      applyFilters(dateFrom, dateTo);
+    }
+
+    function filterVariant(variant, btn) {
+      currentVariant = variant;
+      document.querySelectorAll('.filters:nth-child(3) .filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      applyFilters();
+    }
+
+    function filterSource(source, btn) {
+      currentSource = source;
+      document.querySelectorAll('.filters:nth-child(4) .filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      applyFilters();
+    }
+
+    function applyFilters(dateFrom, dateTo) {
+      let filtered = allLeads;
+      if (currentVariant !== 'all') filtered = filtered.filter(l => l.ab_variant === currentVariant);
+      if (currentSource !== 'all') filtered = filtered.filter(l => (l.social_provider || l.oauth_provider) === currentSource);
+      if (dateFrom) {
+        const dFrom = new Date(dateFrom + 'T00:00:00');
+        filtered = filtered.filter(l => new Date(l.created_at) >= dFrom);
+      }
+      if (dateTo) {
+        const dTo = new Date(dateTo + 'T23:59:59');
+        filtered = filtered.filter(l => new Date(l.created_at) <= dTo);
+      }
+      renderTable(filtered);
+    function renderTable(list = allLeads) {
+      const tbody = document.getElementById('leadsTable');
+      tbody.innerHTML = list.map(lead => {
+        const dateStr = lead.created_at ? new Date(lead.created_at).toLocaleString('ru-RU') : '';
+        const geo = (lead.geo_country || '') + (lead.geo_city ? ', ' + lead.geo_city : '');
+        const status = lead.status || 'new';
+        const nextAct = lead.next_action || '';
+        const nextDate = lead.next_action_date || '';
+        const notes = lead.notes || '';
+        const variant = lead.ab_variant || '—';
+        const source = lead.social_provider || lead.oauth_provider || 'manual';
+        return `
+          <tr data-id="${lead.id}">
+            <td>
+              <div style="font-weight:600; margin-bottom:4px">${escHtml(dateStr)}</div>
+              <div style="font-size:11px; color:var(--muted)">${escHtml(geo)}</div>
+            </td>
+            <td>
+              <div style="font-weight:600; font-size:14px; margin-bottom:4px">${escHtml(lead.name)}</div>
+              <div class="contact-info" style="font-size:12px;">
+                ${lead.email ? `<div>✉️ <a href="mailto:${escHtml(lead.email)}">${escHtml(lead.email)}</a></div>` : ''}
+                ${lead.oauth_email ? `<div>✉️ <a href="mailto:${escHtml(lead.oauth_email)}">${escHtml(lead.oauth_email)}</a> (OAuth)</div>` : ''}
+                ${lead.phone ? `<div>📱 <a href="https://wa.me/${escHtml(lead.phone.replace(/[^0-9]/g, ''))}" target="_blank">${escHtml(lead.phone)}</a></div>` : ''}
+                ${lead.telegram ? `<div>✈️ ${escHtml(lead.telegram)}</div>` : ''}
+              </div>
+            </td>
+            <td>
+              <div style="font-weight:600">${escHtml(lead.town || '')} (${escHtml(lead.tier || '')})</div>
+              <div style="font-size:12px; color:var(--muted); margin-top:4px; max-width:220px; white-space:normal;">
+                ${escHtml(lead.obj_type || '')} · ${(lead.services || '').split(',').filter(Boolean).length} опций
+              </div>
+            </td>
+            <td>
+              <span class="badge badge-variant">${escHtml(variant)}</span>
+            </td>
+            <td>
+              <span class="badge badge-source">${escHtml(source)}</span>
+            </td>
+            <td>
+              <select onchange="updateLead('${escHtml(lead.id)}', 'status', this.value)">
+                <option value="new" ${status === 'new' ? 'selected' : ''}>Новая</option>
+                <option value="contacted" ${status === 'contacted' ? 'selected' : ''}>На связи</option>
+                <option value="waiting" ${status === 'waiting' ? 'selected' : ''}>Ждем ответа</option>
+                <option value="won" ${status === 'won' ? 'selected' : ''}>Сделка</option>
+                <option value="lost" ${status === 'lost' ? 'selected' : ''}>Отказ</option>
+              </select>
+            </td>
+            <td>
+              <select onchange="updateLead('${escHtml(lead.id)}', 'next_action', this.value)" style="margin-bottom:6px;">
+                <option value="" ${nextAct === '' ? 'selected' : ''}>— Нет —</option>
+                <option value="call" ${nextAct === 'call' ? 'selected' : ''}>📞 Позвонить</option>
+                <option value="visit" ${nextAct === 'visit' ? 'selected' : ''}>🏠 Визит</option>
+                <option value="message" ${nextAct === 'message' ? 'selected' : ''}>💬 Написать</option>
+                <option value="reminder" ${nextAct === 'reminder' ? 'selected' : ''}>⏰ Напомнить</option>
+              </select>
+              <input type="date" value="${escHtml(nextDate)}" onchange="updateLead('${escHtml(lead.id)}', 'next_action_date', this.value)">
+            </td>
+            <td>
+              <textarea rows="2" placeholder="Заметки..." onchange="updateLead('${escHtml(lead.id)}', 'notes', this.value)">${escHtml(notes)}</textarea>
+            </td>
+            <td style="width: 80px;">
+              <button class="btn-save" onclick="saveRow(this, '${escHtml(lead.id)}')">ОК</button>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    async function updateLead(id, field, value) {
+      const lead = allLeads.find(l => l.id === id);
+      if (lead) lead[field] = value;
+      const payload = {
+        id: lead.id,
+        status: lead.status,
+        notes: lead.notes,
+        next_action: lead.next_action,
+        next_action_date: lead.next_action_date
+      };
+      try {
+        await fetch('/api/leads', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+      } catch (e) {
+        console.error('Ошибка сохранения', e);
+      }
+    }
+
+    async function saveRow(btn, id) {
+      btn.classList.add('saved');
+      btn.textContent = '✓';
+      setTimeout(() => { btn.classList.remove('saved'); btn.textContent = 'ОК'; }, 1000);
+    }
+
+    loadLeads();
+  </script>
+</body>
+</html>

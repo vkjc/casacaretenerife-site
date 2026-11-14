@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0d5c63" />
+
+  <title>Casa Care on Canary — Property care and management in Tenerife</title>
+  <meta name="description" content="Regular inspections, garden, pool and repair coordination for vacant homes, apartments and land in Tenerife. Transparent contract, fixed monthly price, photo reports after every visit." />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+
+  <link rel="canonical" href="https://casacaretenerife.pages.dev/en/" id="canonicalLink" />
+  <link rel="alternate" hreflang="ru" href="https://casacaretenerife.pages.dev/ru/" />
+  <link rel="alternate" hreflang="en" href="https://casacaretenerife.pages.dev/en/" />
+  <link rel="alternate" hreflang="es" href="https://casacaretenerife.pages.dev/es/" />
+  <link rel="alternate" hreflang="de" href="https://casacaretenerife.pages.dev/de/" />
+  <link rel="alternate" hreflang="x-default" href="https://casacaretenerife.pages.dev/en/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Casa Care on Canary" />
+  <meta property="og:title" content="Casa Care on Canary — Property care and management" id="ogTitle" />
+  <meta property="og:description" content="Regular inspections, garden, pool and repair coordination for vacant homes in Tenerife." id="ogDescription" />
+  <meta property="og:url" content="https://casacaretenerife.pages.dev/en/" id="ogUrl" />
+  <meta property="og:image" content="https://casacaretenerife.pages.dev/tenerife-map.jpg" />
+  <meta property="og:image:width" content="1110" />
+  <meta property="og:image:height" content="963" />
+  <meta property="og:locale" content="en_US" id="ogLocale" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Casa Care on Canary — Property care and management" id="twTitle" />
+  <meta name="twitter:description" content="Regular inspections, garden, pool and repair coordination for vacant homes in Tenerife." id="twDescription" />
+  <meta name="twitter:image" content="https://casacaretenerife.pages.dev/tenerife-map.jpg" />
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230d5c63'/><text x='50' y='68' font-family='Manrope,sans-serif' font-weight='700' font-size='46' fill='white' text-anchor='middle'>CC</text></svg>" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://unpkg.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+  <script>
+    window.APP_CONFIG = {
+      pagesUrl:         'https://casacaretenerife.pages.dev',
+      email:            'casacaretenerife@gmail.com',
+      whatsappNumber:   '34677588163',
+      telegramUser:     'casa_care_bot',
+      apiEndpoint:      '/api/lead',
+      turnstileSiteKey: ''
+    };
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://casacaretenerife.pages.dev/#org",
+        "name": "Casa Care on Canary",
+        "url": "https://casacaretenerife.pages.dev/",
+        "image": "https://casacaretenerife.pages.dev/tenerife-map.jpg",
+        "email": "casacaretenerife@gmail.com",
+        "telephone": "+34677588163",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Tenerife",
+          "addressCountry": "ES"
+        }
+      }
+    ]
+  }
+  <style>
+    :root {
+      --teal: #0d5c63; --teal-dark: #08474d; --teal-light: #e6f3f4;
+      --sand: #f7f3eb; --line: #e2ddd3; --ink: #1c1c1c; --muted: #5c5c5c;
+      --success: #2a7d4f; --danger: #b42318;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', system-ui, -apple-system, sans-serif; background: var(--sand); color: var(--ink); line-height: 1.6; }
+    h1, h2, h3 { font-family: 'Manrope', sans-serif; }
+    a { color: var(--teal); text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+    .section { padding: 60px 0; }
+    .section-bg { background: #fff; }
+    .section-label { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--teal); font-weight: 700; margin-bottom: 8px; display: block; }
+    .section-title { font-size: 32px; margin-bottom: 16px; line-height: 1.2; }
+    .section-lead { font-size: 18px; color: var(--muted); max-width: 700px; margin-bottom: 30px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; padding: 14px 28px; background: var(--teal); color: #fff; border: none; border-radius: 8px; font-weight: 700; font-size: 16px; cursor: pointer; transition: background 0.2s; }
+    .btn:hover { background: var(--teal-dark); }
+    .btn-outline { background: transparent; border: 2px solid var(--teal); color: var(--teal); }
+    .btn-outline:hover { background: var(--teal-light); }
+    .grid { display: grid; gap: 24px; }
+    @media (min-width: 768px) { .grid-cols-2 { grid-template-columns: 1fr 1fr; } }
+    .ab-modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; z-index: 10000; backdrop-filter: blur(4px); }
+    .ab-modal-dialog { background: #fff; border-radius: 16px; width: 92%; max-width: 480px; max-height: 90vh; overflow: auto; animation: abFade 0.3s ease; }
+    @keyframes abFade { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
+    .ab-modal-close { position: absolute; top: 16px; right: 16px; background: transparent; border: none; font-size: 28px; line-height: 1; color: var(--muted); cursor: pointer; padding: 0; width: 32px; height: 32px; }
+    .ab-modal-body { padding: 28px; }
+    .ab-step-title { font-family: 'Manrope', sans-serif; font-size: 20px; margin-bottom: 20px; color: var(--ink); }
+    .ab-form-row { margin-bottom: 16px; }
+    .ab-form-row label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; color: var(--ink); }
+    .ab-form-row input, .ab-form-row select { width: 100%; padding: 10px 12px; border: 1px solid var(--line); border-radius: 8px; font-family: inherit; font-size: 15px; }
+    .ab-form-row input:focus, .ab-form-row select:focus { outline: none; border-color: var(--teal); }
+    .ab-social-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .ab-btn { width: 100%; padding: 12px 16px; border: 1px solid var(--line); border-radius: 8px; background: #fff; color: var(--ink); font-weight: 600; font-size: 14px; cursor: pointer; transition: all 0.2s; }
+    .ab-btn:hover { border-color: var(--teal); color: var(--teal); background: var(--teal-light); }
+    .ab-btn-primary { background: var(--teal); color: #fff; border-color: var(--teal); }
+    .ab-btn-primary:hover { background: var(--teal-dark); }
+    .ab-btn-secondary { background: #fff; color: var(--ink); }
+    .ab-tabs { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+    .ab-tab { padding: 8px 14px; border: 1px solid var(--line); border-radius: 6px; background: #fff; font-size: 13px; cursor: pointer; }
+    .ab-tab.active { background: var(--teal); color: #fff; border-color: var(--teal); }
+    .ab-tabpanel { display: none; margin-bottom: 16px; }
+    .ab-tabpanel label { display: block; font-size: 14px; margin-bottom: 6px; cursor: pointer; }
+    .ab-tabpanel input { margin-right: 8px; }
+    .ab-footer { display: flex; gap: 12px; margin-top: 24px; }
+    .ab-footer button { flex: 1; }
+    .ab-status { font-size: 14px; min-height: 20px; }
+  </style>
+</head>
+<body>
+  <header class="section-bg">
+    <div class="container" style="padding: 24px 20px; display:flex; justify-content:space-between; align-items:center;">
+      <div style="font-family:'Manrope',sans-serif; font-weight:700; font-size:20px; color:var(--teal-dark);">Casa Care</div>
+    </div>
+  </header>
+
+  <section class="section section-bg" id="hero">
+    <div class="container">
+      <div class="grid grid-cols-2" style="align-items:center;">
+        <div>
+          <span class="section-label">Уход за недвижимостью на Тенерифе</span>
+          <h1 class="section-title">Загородный уход, осмотр и координация работ</h1>
+          <p class="section-lead">Регулярные визиты, уход за садом и бассейном, проверка счётчиков, проветривание и фотоотчёты. Работаем по прозрачному договору с фиксированной месячной оплатой.</p>
+          <div style="display:flex; gap:12px; flex-wrap:wrap;">
+            <button class="btn" id="open-form-a">Получить расчёт</button>
+            <button class="btn btn-outline" id="open-form-b">Быстрый старт через соцсети</button>
+          </div>
+        </div>
+        <div style="min-height:300px; background:#eef6f7; border-radius:12px; display:flex; align-items:center; justify-content:center; color:var(--muted);">
+          Карта Тенерифе (Leaflet)
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="how-it-works">
+    <div class="container">
+      <span class="section-label">Как это работает</span>
+      <h2 class="section-title">Простой процесс в 4 шага</h2>
+      <p class="section-lead">Вы описываете объект и нужные услуги — мы готовим предложение и договор. Потом заботимся о вашем доме.</p>
+      <div class="grid grid-cols-2" style="gap:16px;">
+        <div style="background:#fff; padding:20px; border-radius:12px; border:1px solid var(--line);">
+          <strong>1. Заявка</strong><p style="font-size:14px; color:var(--muted); margin-top:8px;">Укажите тип объекта, зону на карте и отметьте нужные услуги.</p>
+        </div>
+        <div style="background:#fff; padding:20px; border-radius:12px; border:1px solid var(--line);">
+          <strong>2. Расчёт</strong><p style="font-size:14px; color:var(--muted); margin-top:8px;">Мы готовим предложение с месячной стоимостью и лимитами срочных расходов.</p>
+        </div>
+        <div style="background:#fff; padding:20px; border-radius:12px; border:1px solid var(--line);">
+          <strong>3. Договор</strong><p style="font-size:14px; color:var(--muted); margin-top:8px;">Подписываете контракт, передаёте ключи по акту приёма-передачи.</p>
+        </div>
+        <div style="background:#fff; padding:20px; border-radius:12px; border:1px solid var(--line);">
+          <strong>4. Уход</strong><p style="font-size:14px; color:var(--muted); margin-top:8px;">Регулярные визиты, фотоотчёты, срочные действия только в рамках договора.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-bg" id="contract">
+    <div class="container">
+      <span class="section-label">Прозрачный договор</span>
+      <h2 class="section-title">Юридическая защита</h2>
+      <p class="section-lead">Шаблон на испанском языке, адаптированный под Тенерифе. Защищает от бесконтрольных расходов и даёт ясный объём работ.</p>
+      <ul style="list-style:none; margin-top:20px;">
+        <li style="margin-bottom:8px;">✓ Нет права тратить крупные суммы без вашего согласия</li>
+        <li style="margin-bottom:8px;">✓ Обязательные отчёты с фотографиями после каждого визита</li>
+        <li style="margin-bottom:8px;">✓ Акт состояния объекта при передаче ключей</li>
+        <li style="margin-bottom:8px;">✓ Чёткий перечень услуг в приложении (Anexo I)</li>
+      </ul>
+      <div style="margin-top:24px;">
+        <a href="/contract_ru.html" class="btn">Скачать договор (PDF)</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="section-bg">
+    <div class="container" style="padding:40px 20px; border-top:1px solid var(--line);">
+      <p style="font-size:14px; color:var(--muted); text-align:center;">© 2026 Casa Care on Canary. Уход, осмотр и координация работ по недвижимости на Тенерифе.</p>
+    </div>
+  </footer>
+
+  <script type="module" src="js/form-loader.js"></script>
+
+  <script>
+    document.getElementById('open-form-a')?.addEventListener('click', () => {
+      document.cookie = 'cc_ab_variant=variant-a; Path=/; Max-Age=86400; SameSite=Lax';
+      location.reload();
+    });
+
+    document.getElementById('open-form-b')?.addEventListener('click', () => {
+      document.cookie = 'cc_ab_variant=variant-b; Path=/; Max-Age=86400; SameSite=Lax';
+      location.reload();
+    });
+  </script>
+</body>
+</html>
+  <div id="form-root"></div>
