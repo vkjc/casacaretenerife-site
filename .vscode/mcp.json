@@ -1,0 +1,16 @@
+{
+  "servers": {
+    "gitkraken": {
+      "command": "gk",
+      "args": ["mcp", "stdio"]
+    },
+    "filesystem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "C:\\Users\\razrv\\cct"
+      ]
+    }
+  }
+}

@@ -1,0 +1,53 @@
+name = "site-builder"
+main = "src/worker.js"
+compatibility_date = "2025-09-01"
+account_id = "d3eee9f9fed2f8accd14670ad4ff3b1e"
+
+# Все запросы идут через воркер: он отдаёт опубликованные страницы из D1.
+# Файлы редактора лежат в public/_editor/ и доступны только по секретному пути.
+[assets]
+directory = "./public"
+binding = "ASSETS"
+run_worker_first = true
+
+# D1 — страницы, версии, настройки, опубликованный HTML.
+# database_id ниже указывает на отдельную тестовую базу.
+# Таблицы воркер создаёт сам при первом запросе (см. schema.sql — тот же текст).
+[[d1_databases]]
+binding = "DB"
+database_name = "site-builder"
+database_id = "933b4c1c-39fb-461a-9681-40f3064d6cd6"
+
+# R2 — загрузка картинок и видео из редактора. НЕОБЯЗАТЕЛЬНО.
+# Для R2 Cloudflare может потребовать привязать карту, даже в рамках бесплатного лимита.
+# Без R2 в редакторе работает вставка медиа по URL.
+# Чтобы включить: npx wrangler r2 bucket create site-media и раскомментируйте:
+# [[r2_buckets]]
+# binding = "MEDIA"
+# bucket_name = "site-media"
+
+# ---------- Письма о заявках (необязательно) ----------
+# Нужен адрес отправителя на ВАШЕМ домене и один из двух способов отправки.
+# Получатели задаются в редакторе: ⚙ Настройки → «Письма о заявках».
+# [vars]
+# NOTIFY_FROM = "site@your-domain.com"
+#
+# Способ 1 — Cloudflare Email Routing (бесплатно; домен должен быть в Cloudflare,
+# а адреса получателей подтверждены в Email Routing → Destination addresses):
+# [[send_email]]
+# name = "EMAIL"
+#
+# Способ 2 — Resend (resend.com, бесплатный тариф; нужен подтверждённый домен):
+#   npx wrangler secret put RESEND_API_KEY
+# Если заданы оба, используется Resend.
+
+# ---------- Капча Cloudflare Turnstile (необязательно) ----------
+# 1) Cloudflare → Turnstile → Add widget: получите Site key и Secret key.
+# 2) Секрет:  npx wrangler secret put TURNSTILE_SECRET
+# 3) Site key — в редакторе: ⚙ Настройки → «Капча», затем опубликуйте страницы заново.
+# Для проверки есть тестовые ключи: Site key 1x00000000000000000000AA,
+# Secret 1x0000000000000000000000000000000AA (всегда проходят).
+
+# Секреты (команды в README):
+#   ADMIN_TOKEN — пароль редактора
+#   ADMIN_PATH  — секретный путь редактора, например x7k9m2

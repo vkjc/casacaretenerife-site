@@ -1,0 +1,453 @@
+Техническое задание: Casa Care on Canary
+Версия: 1.0
+Дата: 9 ноября 2026
+Статус: MVP готов, готовится backend-интеграция
+
+1. Общая информация
+Параметр	Значение
+Название проекта	Casa Care on Canary
+Тип	Lead-генерация, лендинг с воронкой
+Услуга	Присмотр, уход и координация работ для пустующей недвижимости на Тенерифе
+Целевая аудитория	Иностранные владельцы вилл/квартир, живущие за пределами острова
+Языки	RU / EN / ES (MVP), план до 12 языков
+Стек	Vanilla HTML/CSS/JS, Leaflet, Cloudflare Pages
+URL (текущий)	https://casacaretenerife.pages.dev
+Контакт	casacaretenerife@gmail.com, WhatsApp +34 677 588 163
+2. Цели и задачи
+2.1. Бизнес-цели
+Собирать квалифицированные заявки на расчёт стоимости обслуживания недвижимости.
+
+Минимизировать отсев на воронке за счёт понятного и быстрого UX.
+
+Не терять заявки: доставка через 3 канала одновременно (Email, WhatsApp, Telegram).
+
+2.2. Продуктовые задачи (MVP)
+✅ Одностраничный лендинг с ключевыми блоками.
+
+✅ 4-шаговая форма заявки с картой, иконками, валидацией и автоотправкой.
+
+✅ SEO-оптимизация на 3 языка.
+
+⏳ Backend для приёма заявок (Cloudflare Worker + D1 + Telegram Bot).
+
+⏳ Публикация PDF-договоров на 3 языках.
+
+⏳ Google Search Console verification.
+
+⏳ Cloudflare Web Analytics token.
+
+3. Целевая аудитория
+Сегмент	Доля (оценка)	Особенности
+Британцы / ирландцы (EN)	~35%	Крупнейшая группа, привычка к digital-сервисам
+Немцы / австрийцы (DE)	~17%	Высокая платёжеспособность, любят порядок
+Испанцы-материковые (ES)	~12%	Часто навещают объект лично
+Скандинавы (SE/NO/FI)	~10%	Digital-native, длинные зимовки
+Прочие (FR, IT, NL, PL, RU, PT)	~26%	Более лояльны к персональному сервису
+Психологический портрет: владелец не хочет управлять процессом, хочет «спокойный сон». Боится: протечек, плесени, взлома, непрозрачных счётов.
+
+4. Архитектура
+4.1. Схема
+text
+Cloudflare Pages (статика)
+├── index.html           — лендинг
+├── admin.html           — редактор сетки зон (за Access)
+├── grid.js              — матрица раскраски 60×80
+├── tenerife-map.jpg     — карта острова
+├── robots.txt / sitemap.xml
+├── _redirects / _headers
+├── i18n/{ru,en,es}.json — словари (в плане)
+└── contract_{ru,en,es}.pdf
+
+Cloudflare Pages Functions (Worker)
+└── /api/lead.js         — приём заявок
+
+Cloudflare D1
+└── leads (id, created_at, lang, town, tier, obj_type, vacancy,
+          services, contact_method, email, phone, name,
+          ua, ip_hash)
+
+Внешние сервисы
+├── Telegram Bot API   — уведомления владельцу
+├── Resend (позже)     — email-копия
+├── Turnstile          — антиспам
+└── Cloudflare Web Analytics + Google Search Console
+4.2. Ограничения бесплатного тарифа Cloudflare
+Сервис	Лимит Free	Достаточно?
+Pages	∞ запросов, 500 сборок/мес	✅ с запасом
+Workers	100K запросов/день, 10 мс CPU	✅
+D1	5 ГБ, 5M чтений/день	✅ миллионы лидов
+Turnstile	∞	✅
+Access	до 50 пользователей	✅ для admin
+Email sending	❌	нужен Resend
+5. Функциональные требования
+5.1. Главная страница (лендинг)
+Блок	Функция
+Header	Логотип CC, меню, переключатель языков, CTA
+Hero	Заголовок, лид, 2 кнопки («Рассчитать стоимость», «WhatsApp»), интерактивная карта Тенерифе
+About	4 преимущества + карточка «Что входит»
+How it works	4 шага процесса
+Reviews	3 отзыва
+Contract	5 пунктов защиты + 2 кнопки (расчёт / скачать PDF)
+FAQ	12 вопросов-ответов по договору (аккордеон)
+Cabinet stub	Заглушка «Личный кабинет (скоро)»
+Footer	Навигация, email, WhatsApp, локация
+5.2. Модальное окно «Расчёт стоимости»
+Общие правила:
+
+Высота: max-height: 92vh.
+
+Скролл запрещён (правило: .modal-body { overflow: hidden; min-height: 0 }).
+
+Навигация: круглые стрелки ← → на одном уровне с прогресс-баром.
+
+Заголовок центрирован и меняется по шагу.
+
+На экране «Успех» — навигация скрыта.
+
+Шаг 1: Выбор места на карте
+Интерактивная карта Leaflet (CRS.Simple + imageOverlay).
+
+Сетка 60×80 наложена через Canvas (прозрачность 90%).
+
+Клик по ячейке зоны A/B/C → ставится одна точка (старая удаляется).
+
+Стрелка «Далее» неактивна до клика по зоне.
+
+Без скролла — карта занимает всю доступную высоту.
+
+Шаг 2: Тип объекта + частота
+2 ряда по 3 иконки, без текстов-подсказок.
+
+Цветовые схемы: дом (терракота), квартира (циан), участок (олива); пустует — большая часть года (teal), сезонно (янтарь), периодически (серый).
+
+«Далее» активна после выбора в обоих рядах.
+
+Шаг 3: Услуги
+4 таба (Жильё / Сад / Бассейн / Гараж) с цветными иконками.
+
+Точка-индикатор на табе, если выбраны подуслуги.
+
+Подуслуги — toggle-иконки 3-4 штуки на таб.
+
+«Далее» активна при ≥1 выбранной подуслуге.
+
+Шаг 4: Контакты
+3 поля ввода: Email, WhatsApp, Telegram.
+
+Зелёная точка-индикатор валидности у каждого поля.
+
+Поле «Имя» — обязательно.
+
+Чекбокс согласия (полный текст согласия с упоминанием ООО «ССС»).
+
+Пользователь может заполнить от 1 до 3 каналов, «Далее» активна если хотя бы один валиден + имя + галочка.
+
+5.3. Экран «Успех»
+Автоматическая отправка через все заполненные каналы.
+
+Кнопки Email / WhatsApp / Telegram появляются последовательно.
+
+Каждая кнопка: анимация нажатия (0.8 с) → зелёная галочка «отправлено».
+
+После завершения всех анимаций — таймер 65 секунд с текстом «Окно закроется через X сек».
+
+По истечении — модалка закрывается автоматически.
+
+5.4. Мультиязычность
+Переключатель RU / EN / ES в шапке.
+
+Все строки в объекте I18N.
+
+Динамическое обновление <title>, description, canonical, og:*, hreflang, JSON-LD FAQ.
+
+URL-роутинг: /ru/, /en/, /es/ через _redirects.
+
+Дефолтный язык: en (для SEO).
+
+5.5. Админ-панель (admin.html)
+Загрузка tenerife-map.jpg.
+
+Сетка 60×80 поверх картинки.
+
+Кисточки A / B / C / Стереть.
+
+Рисование мышью (mousedown + mousemove).
+
+Кнопка «Скачать grid.js» — экспорт GRID_DATA.
+
+Должна быть закрыта Cloudflare Access (email-OTP).
+
+6. Технические требования
+6.1. Производительность
+Lighthouse Performance ≥ 90.
+
+Первая отрисовка (FCP) < 2 с.
+
+Размер HTML + JS < 100 КБ (без картинки).
+
+6.2. Мобильная адаптация
+Breakpoints: 900px (планшет), 560px (телефон).
+
+Тач-таргеты ≥ 44×44px.
+
+На iPhone SE (568px) — всё помещается без горизонтального скролла.
+
+6.3. Доступность
+Контраст ≥ 4.5:1.
+
+Все поля с <label>.
+
+Фокус-состояния видимы.
+
+Навигация клавиатурой работает.
+
+6.4. Безопасность
+Turnstile на шаге 4 (антиспам).
+
+Rate-limit 3 заявки / 60 сек по IP (SHA-256 хеш, не raw IP).
+
+Все поля обрезаются по длине.
+
+_headers: CSP, X-Frame-Options, HSTS, Permissions-Policy.
+
+/admin.html — за Cloudflare Access.
+
+7. Дизайн
+7.1. Палитра
+Название	HEX	Использование
+Teal	#0d5c63	Основной акцент
+Teal dark	#08474d	Hover-состояния
+Teal light	#e6f3f4	Фон-подсветка
+Sand	#f7f3eb	Основной фон
+Line	#e2ddd3	Границы
+Ink	#1c1c1c	Текст
+Muted	#5c5c5c	Вторичный текст
+Success	#2a7d4f	Валидность, ✓
+C-house	#c45c26	Дом
+C-apt	#0891b2	Квартира
+C-land	#65a30d	Участок
+7.2. Типографика
+Заголовки: Manrope (500, 600, 700)
+
+Текст: Inter (400, 500, 600, 700)
+
+Размеры: h1 clamp(1.8rem, 4vw, 2.6rem), body 16px.
+
+7.3. Принципы
+Спокойный, солидный вид.
+
+Минимум декора.
+
+Цветные иконки для навигации (не текст).
+
+Прогрессивное раскрытие (не показывать всё сразу).
+
+8. SEO
+8.1. Базовые теги
+<title> — 60–65 символов, ключ + бренд.
+
+<meta name="description"> — 150–160 символов.
+
+<link rel="canonical"> — абсолютный URL.
+
+<link rel="alternate" hreflang> × 4 (ru/en/es/x-default).
+
+8.2. Open Graph + Twitter
+og:type, og:site_name, og:title, og:description, og:url, og:image (1110×963), og:locale.
+
+twitter:card, twitter:title, twitter:description, twitter:image.
+
+8.3. JSON-LD
+LocalBusiness (name, url, email, telephone, address, areaServed, availableLanguage).
+
+Service (serviceType, areaServed, offers).
+
+FAQPage — генерируется динамически из I18N (12 вопросов).
+
+8.4. sitemap.xml
+3 URL (/ru/, /en/, /es/), lastmod, changefreq: monthly, priority: 1.0.
+
+hreflang для каждой страницы.
+
+8.5. robots.txt
+Allow: /
+
+Disallow: /admin.html, /api/, /grid.js
+
+Sitemap: https://.../sitemap.xml
+
+8.6. Целевые ключевые запросы (RU/EN/ES)
+Язык	Запросы	Оценка объёма
+EN	property management Tenerife, home watch Tenerife, villa management Tenerife	800–1500 / 50–150 / 200–400
+ES	gestión de inmuebles Tenerife, mantenimiento vivienda vacía	200–500 / 20–60
+RU	управление недвижимостью Тенерифе, присмотр за домом Тенерифе	50–150 / 20–60
+Стратегия: ставка на лонгтейлы с локацией, а не на высокочастотные зонтичные.
+
+9. Интеграции
+9.1. Обязательные (MVP)
+Сервис	Назначение
+Cloudflare Pages	Хостинг статики
+Cloudflare D1	Хранение заявок
+Cloudflare Workers	API /api/lead
+Telegram Bot	Уведомления владельцу
+Turnstile	Антиспам
+9.2. Планируемые
+Сервис	Назначение	Когда
+Cloudflare Web Analytics	Трафик без cookies	Сразу после деплоя
+Google Search Console	Индексация, запросы	Сразу после деплоя
+Resend	Email-копия клиенту	После покупки домена
+GA4	Расширенная аналитика	После 100 лидов
+Meta Pixel	Ретаргетинг	Только если запустим FB Ads
+10. Деплой
+10.1. Порядок
+bash
+# 1. Установка
+npm install -g wrangler
+
+# 2. Авторизация
+wrangler login
+
+# 3. Создание D1
+wrangler d1 create domtenerife-leads
+# → скопировать database_id в wrangler.toml
+
+# 4. Применение схемы
+wrangler d1 execute domtenerife-leads --remote --file=./schema.sql
+
+# 5. Секреты
+wrangler pages secret put TELEGRAM_BOT_TOKEN
+wrangler pages secret put TURNSTILE_SECRET
+
+# 6. Деплой
+wrangler pages deploy .
+
+# 7. Обновление без изменений конфига
+wrangler pages deploy .
+# → hard-reload в браузере (Ctrl+Shift+R)
+10.2. Откат
+dash.cloudflare.com → Workers & Pages → casacaretenerife → Deployments → Rollback.
+
+11. Тестирование (MVP)
+11.1. Функциональные тесты
+□ Заявка проходит все 4 шага.
+□ Точка на карте ставится в правильной зоне.
+□ Старая точка исчезает при клике в новое место.
+□ Валидация email/phone/telegram работает (зелёные точки).
+□ Кнопка «Далее» на шаге 4 активна при ≥1 канале + имя + галочка.
+□ Экран «Успех» показывает отправку через все заполненные каналы.
+□ Таймер 65 секунд закрывает модалку автоматически.
+□ Переключение RU/EN/ES меняет все строки.
+□ FAQ раскрывается на 3 языках.
+□ PDF-договор скачивается по языку.
+11.2. Тесты на устройствах
+□ Desktop Chrome / Firefox / Safari.
+□ iPhone SE (568px) — без скролла.
+□ iPhone 14 / Android.
+□ iPad — карта не вылезает за пределы.
+11.3. SEO-тесты
+□ validator.schema.org — 0 ошибок в FAQ JSON-LD.
+□ opengraph.xyz — превью выглядит нормально.
+□ search.google.com/search-console/robots-tester — robots прочитан.
+□ hreflang корректен в view-source.
+□ Sitemap доступен по /sitemap.xml.
+12. Правила разработки (для команды)
+Сначала анализ, потом код. Не переписывать файл без явного «ок» от заказчика.
+
+Никакого овер-инжиниринга. Vanilla JS без фреймворков. Никаких React/Vue.
+
+Никакого скролла в модалке — это архитектурное правило. Если контент не влезает, уменьшать шрифты/отступы, а не добавлять скролл.
+
+Прогрессивное раскрытие — показывать пользователю только то, что нужно на текущем шаге.
+
+Одна переменная за раз — если ломается, легче откатить.
+
+Мультиязычность через i18n — все строки в словарях, никакого текста в JSX/HTML напрямую.
+
+Проверка на реальном устройстве — эмулятор Chrome ≠ iPhone Safari.
+
+13. Дорожная карта
+Фаза 1: UI MVP ✅ (готово)
+Лендинг, форма, карта, FAQ, SEO.
+
+Фаза 2: Backend (следующая)
+Worker /api/lead, D1, Telegram-бот, Turnstile.
+
+Тестовая заявка end-to-end.
+
+Фаза 3: Public Launch
+Деплой на casacaretenerife.pages.dev.
+
+Cloudflare Web Analytics + Google Search Console.
+
+Первые лиды.
+
+Фаза 4: Scale
+Домен .com (~€10/год).
+
+Resend (email-копия клиенту).
+
+PDF-договоры на 3 языка.
+
+Cloudflare Access на /admin.html.
+
+Фаза 5: 12 языков
+Порядок: RU/EN/ES → +DE/SE/NL → +FR/IT/NO/FI → +PL/RU/PT.
+
+Покрытие: 64% → 76% → 88% → 93% рынка.
+
+Фаза 6: Автоматизация
+Личный кабинет клиента.
+
+Отчёты по визитам (фото, счета, история).
+
+Интеграция с бухгалтерией.
+
+14. Приложения
+14.1. Структура файлов
+text
+/
+├── index.html
+├── admin.html
+├── grid.js
+├── tenerife-map.jpg
+├── robots.txt
+├── sitemap.xml
+├── _redirects
+├── _headers
+├── wrangler.toml
+├── schema.sql
+├── functions/api/lead.js
+└── contract_ru.pdf / contract_en.pdf / contract_es.pdf
+14.2. Переменные окружения
+TELEGRAM_BOT_TOKEN (wrangler secret)
+
+TURNSTILE_SECRET (wrangler secret)
+
+TELEGRAM_CHAT_ID (wrangler.toml → vars)
+
+14.3. Данные для APP_CONFIG
+js
+{
+  pagesUrl: 'https://casacaretenerife.pages.dev',
+  email: 'casacaretenerife@gmail.com',
+  whatsappNumber: '34677588163',
+  telegramUser: '', // username бота
+  apiEndpoint: '/api/lead',
+  turnstileSiteKey: ''
+}
+14.4. Схема БД
+sql
+CREATE TABLE leads (
+  id TEXT PRIMARY KEY,
+  created_at TEXT NOT NULL,
+  lang TEXT, town TEXT, tier TEXT,
+  obj_type TEXT, vacancy TEXT, services TEXT,
+  contact_method TEXT,
+  email TEXT, phone TEXT, name TEXT,
+  ua TEXT, ip_hash TEXT
+);
+CREATE INDEX idx_leads_created ON leads(created_at DESC);
+CREATE INDEX idx_leads_iphash ON leads(ip_hash, created_at);
+Конец документа.
+
+ТЗ актуально на 9 ноября 2026. При изменении архитектуры или стека — обновляйте разделы 4, 10, 14.

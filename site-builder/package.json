@@ -1,0 +1,7 @@
+{
+  "name": "site-builder",
+  "private": true,
+  "description": "Конструктор сайтов на Cloudflare. package.json нужен только для автотестов: сам проект собирается без npm.",
+  "scripts": { "test": "node --experimental-sqlite --test tests/*.test.mjs" },
+  "devDependencies": { "jsdom": "^26.0.0" }
+}

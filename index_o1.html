@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0d5c63" />
+
+  <!-- ============ SEO БАЗОВОЕ ============ -->
+  <title>Dom Tenerife — Property care and management in Tenerife</title>
+  <meta name="description" content="Regular inspections, garden, pool and repair coordination for vacant homes, apartments and land in Tenerife. Transparent contract, fixed monthly price, photo reports after every visit." />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+
+  <link rel="canonical" href="https://casacaretenerife.pages.dev/en/" id="canonicalLink" />
+  <link rel="alternate" hreflang="ru" href="https://casacaretenerife.pages.dev/ru/" />
+  <link rel="alternate" hreflang="en" href="https://casacaretenerife.pages.dev/en/" />
+  <link rel="alternate" hreflang="es" href="https://casacaretenerife.pages.dev/es/" />
+  <link rel="alternate" hreflang="x-default" href="https://casacaretenerife.pages.dev/en/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Dom Tenerife" />
+  <meta property="og:title" content="Dom Tenerife — Property care and management" id="ogTitle" />
+  <meta property="og:description" content="Regular inspections, garden, pool and repair coordination for vacant homes in Tenerife." id="ogDescription" />
+  <meta property="og:url" content="https://casacaretenerife.pages.dev/en/" id="ogUrl" />
+  <meta property="og:image" content="https://casacaretenerife.pages.dev/tenerife-map.jpg" />
+  <meta property="og:image:width" content="1110" />
+  <meta property="og:image:height" content="963" />
+  <meta property="og:locale" content="en_US" id="ogLocale" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Dom Tenerife — Property care and management" id="twTitle" />
+  <meta name="twitter:description" content="Regular inspections, garden, pool and repair coordination for vacant homes in Tenerife." id="twDescription" />
+  <meta name="twitter:image" content="https://casacaretenerife.pages.dev/tenerife-map.jpg" />
+
+  <!-- Verification / Analytics -->
+  <meta name="google-site-verification" content="REPLACE_WITH_GOOGLE_SEARCH_CONSOLE_TAG" />
+  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "REPLACE_WITH_CF_ANALYTICS_TOKEN"}'></script>
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230d5c63'/><text x='50' y='68' font-family='Manrope,sans-serif' font-weight='700' font-size='46' fill='white' text-anchor='middle'>DT</text></svg>" />
+
+  <!-- Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://unpkg.com" />
+  <link rel="preconnect" href="https://challenges.cloudflare.com" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+  <!-- APP_CONFIG -->
+  <script>
+    window.APP_CONFIG = {
+      pagesUrl:         'https://casacaretenerife.pages.dev',
+      email:            'casacaretenerife@gmail.com',
+      whatsappNumber:   '34677588163',
+      telegramUser:     '',
+      apiEndpoint:      '',
+      turnstileSiteKey: ''
+    };
+  </script>
+
+  <!-- JSON-LD LocalBusiness + Service -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://casacaretenerife.pages.dev/#org",
+        "name": "Dom Tenerife",
+        "url": "https://casacaretenerife.pages.dev/",
+        "image": "https://casacaretenerife.pages.dev/tenerife-map.jpg",
+        "email": "casacaretenerife@gmail.com",
+        "telephone": "+34677588163",
+        "priceRange": "€€",
+        "areaServed": { "@type": "AdministrativeArea", "name": "Tenerife" },
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Tenerife",
+          "addressRegion": "Canarias",
+          "addressCountry": "ES"
+        },
+        "availableLanguage": ["ru","en","es"]
+      },
+      {
+        "@type": "Service",
+        "name": "Property care and management for vacant homes in Tenerife",
+        "provider": { "@id": "https://casacaretenerife.pages.dev/#org" },
+        "areaServed": { "@type": "AdministrativeArea", "name": "Tenerife" },
+        "serviceType": ["Property inspection","Home supervision","Garden care","Pool maintenance","Repair coordination","Photo reporting"],
+        "offers": { "@type": "Offer", "priceCurrency": "EUR", "availability": "https://schema.org/InStock" }
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json" id="jsonld-faq">{}</script>
+
+  <script src="grid.js"></script>
+
+<style>
+  :root{
+    --teal:#0d5c63; --teal-dark:#08474d; --teal-light:#e6f3f4;
+    --sand:#f7f3eb; --line:#e2ddd3;
+    --ink:#1c1c1c; --muted:#5c5c5c;
+    --success:#2a7d4f; --radius:12px;
+    --shadow:0 8px 30px rgba(13,92,99,.08);
+    --shadow-lg:0 20px 50px rgba(13,92,99,.12);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--sand);line-height:1.55;font-size:16px}
+  h1,h2,h3,h4{font-family:'Manrope',sans-serif;font-weight:700;line-height:1.25}
+  a{color:var(--teal);text-decoration:none}
+  a:hover{text-decoration:underline}
+  button{font-family:inherit;cursor:pointer;border:none}
+
+  .header{position:sticky;top:0;z-index:100;background:rgba(247,243,235,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  .header-inner{max-width:1120px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  .logo{display:flex;align-items:center;gap:10px;font-family:'Manrope',sans-serif;font-weight:700;font-size:1.1rem;color:var(--teal-dark);text-decoration:none}
+  .logo-mark{width:34px;height:34px;border-radius:9px;background:var(--teal);color:#fff;display:grid;place-items:center;font-size:17px}
+  .nav{display:flex;gap:22px;align-items:center}
+  .nav a{color:var(--ink);font-weight:500;font-size:.92rem;text-decoration:none}
+  .nav a:hover{color:var(--teal)}
+  .nav-side{display:flex;align-items:center;gap:12px}
+
+  .lang-switch{display:inline-flex;background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+  .lang-btn{background:transparent;border:none;padding:7px 11px;font-size:.82rem;font-weight:600;color:var(--muted);cursor:pointer;transition:.15s}
+  .lang-btn:hover{color:var(--teal)}
+  .lang-btn.active{background:var(--teal);color:#fff}
+
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 20px;border-radius:10px;font-weight:600;font-size:.92rem;transition:all .2s;text-decoration:none}
+  .btn-primary{background:var(--teal);color:#fff;box-shadow:0 4px 14px rgba(13,92,99,.25)}
+  .btn-primary:hover{background:var(--teal-dark);transform:translateY(-1px);text-decoration:none}
+  .btn-outline{background:transparent;color:var(--teal);border:1.5px solid var(--teal)}
+  .btn-outline:hover{background:var(--teal-light);text-decoration:none}
+  .btn-lg{padding:15px 26px;font-size:1.02rem;border-radius:12px}
+  .btn-white{background:#fff;color:var(--teal-dark)}
+  .btn-white:hover{background:var(--sand)}
+  .menu-toggle{display:none;background:none;font-size:1.3rem;color:var(--ink)}
+
+  .hero{max-width:1120px;margin:0 auto;padding:52px 20px 68px;display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:center}
+  .hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--teal-light);color:var(--teal-dark);padding:6px 14px;border-radius:999px;font-size:.83rem;font-weight:600;margin-bottom:16px}
+  .hero h1{font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:14px}
+  .hero h1 span{color:var(--teal)}
+  .hero-lead{font-size:1.06rem;color:var(--muted);margin-bottom:26px;max-width:480px}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:26px}
+  .hero-note{font-size:.88rem;color:var(--muted)}
+  .hero-visual{background:#fff;border-radius:20px;box-shadow:var(--shadow-lg);overflow:hidden;border:1px solid var(--line)}
+  .hero-visual-top{height:210px;background:linear-gradient(145deg,#0d5c63 0%,#1a8a8f 45%,#c4a574 100%);position:relative;display:flex;align-items:flex-end;padding:18px}
+  .hero-card{background:rgba(255,255,255,.95);border-radius:12px;padding:13px 15px;position:relative;z-index:1;box-shadow:0 4px 20px rgba(0,0,0,.1)}
+  .hero-card strong{display:block;font-size:.92rem;margin-bottom:2px}
+  .hero-card span{font-size:.78rem;color:var(--muted)}
+  .hero-visual-body{padding:18px}
+  .hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;text-align:center}
+  .hero-stats div strong{display:block;font-size:1.2rem;color:var(--teal)}
+  .hero-stats div span{font-size:.76rem;color:var(--muted)}
+
+  section{padding:68px 20px}
+  .container{max-width:1120px;margin:0 auto}
+  .section-label{display:inline-block;font-size:.78rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--teal);margin-bottom:10px}
+  .section-title{font-size:clamp(1.55rem,3vw,2rem);margin-bottom:12px}
+  .section-lead{color:var(--muted);max-width:560px;margin-bottom:32px}
+
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:start}
+  .about-card{background:#fff;border-radius:var(--radius);padding:22px;border:1px solid var(--line);box-shadow:var(--shadow)}
+  .about-card h3{font-size:1.05rem;margin-bottom:8px;color:var(--teal-dark)}
+  .about-list{list-style:none;margin-top:18px}
+  .about-list li{display:flex;gap:12px;padding:10px 0;border-bottom:1px solid var(--line);font-size:.94rem}
+  .about-list li:last-child{border-bottom:none}
+  .about-list .icon{width:26px;height:26px;border-radius:8px;background:var(--teal-light);color:var(--teal);display:grid;place-items:center;flex-shrink:0;font-size:13px}
+
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .step{background:#fff;border-radius:var(--radius);padding:22px 18px;border:1px solid var(--line)}
+  .step-num{width:34px;height:34px;border-radius:50%;background:var(--teal);color:#fff;display:grid;place-items:center;font-weight:700;font-size:.92rem;margin-bottom:12px}
+  .step h3{font-size:1rem;margin-bottom:6px}
+  .step p{font-size:.88rem;color:var(--muted)}
+
+  .testimonials{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .testimonial{background:#fff;border-radius:var(--radius);padding:22px;border:1px solid var(--line);box-shadow:var(--shadow)}
+  .testimonial p{font-size:.93rem;margin-bottom:14px}
+  .testimonial-author{display:flex;align-items:center;gap:10px}
+  .avatar{width:40px;height:40px;border-radius:50%;background:var(--teal-light);color:var(--teal-dark);display:grid;place-items:center;font-weight:700;font-size:.85rem}
+  .testimonial-author strong{display:block;font-size:.88rem}
+  .testimonial-author span{font-size:.78rem;color:var(--muted)}
+
+  .contract-box{background:#fff;border-radius:16px;border:1px solid var(--line);box-shadow:var(--shadow);padding:30px;display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center}
+  .contract-points{list-style:none;margin-top:14px}
+  .contract-points li{padding:7px 0 7px 26px;position:relative;font-size:.93rem}
+  .contract-points li::before{content:'✓';position:absolute;left:0;color:var(--success);font-weight:700}
+
+  /* FAQ */
+  .faq-list{max-width:840px;margin:0 auto;display:grid;gap:10px}
+  .faq-item{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;transition:box-shadow .2s ease,border-color .2s ease}
+  .faq-item[open]{box-shadow:0 6px 24px rgba(13,92,99,.10);border-color:rgba(13,92,99,.25)}
+  .faq-item summary{padding:16px 20px;cursor:pointer;font-weight:600;font-size:.98rem;display:flex;justify-content:space-between;align-items:center;gap:16px;list-style:none;user-select:none}
+  .faq-item summary::-webkit-details-marker{display:none}
+  .faq-item summary::after{content:'+';font-size:1.5rem;font-weight:400;color:var(--teal);line-height:1;transition:transform .2s ease;flex-shrink:0}
+  .faq-item[open] summary::after{content:'−'}
+  .faq-item summary:hover{background:var(--teal-light)}
+  .faq-answer{padding:0 20px 18px;color:var(--muted);font-size:.93rem;line-height:1.65}
+
+  .cabinet-stub{background:linear-gradient(135deg,var(--teal-dark),var(--teal));color:#fff;border-radius:16px;padding:38px;text-align:center}
+  .cabinet-stub h2{color:#fff;margin-bottom:8px}
+  .cabinet-stub p{opacity:.92;margin-bottom:18px;max-width:440px;margin-left:auto;margin-right:auto;font-size:.95rem}
+
+  footer{background:var(--ink);color:#c8c8c8;padding:44px 20px 26px}
+  .footer-inner{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:28px}
+  .footer-logo{color:#fff;font-family:'Manrope',sans-serif;font-weight:700;font-size:1.1rem;margin-bottom:10px}
+  .footer-col h4{color:#fff;font-size:.88rem;margin-bottom:12px}
+  .footer-col a{display:block;color:#a0a0a0;font-size:.88rem;margin-bottom:7px;text-decoration:none}
+  .footer-col a:hover{color:#fff}
+  .footer-bottom{max-width:1120px;margin:28px auto 0;padding-top:18px;border-top:1px solid #333;font-size:.82rem;color:#777;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+  /* Modal */
+  .modal-overlay{position:fixed;inset:0;background:rgba(15,30,32,.55);z-index:200;display:none;align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(4px)}
+  .modal-overlay.open{display:flex}
+  .modal{background:#fff;border-radius:18px;width:100%;max-width:760px;max-height:94vh;display:flex;flex-direction:column;box-shadow:0 25px 60px rgba(0,0,0,.25);overflow:hidden}
+  .modal-header{padding:16px 20px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;background:var(--sand);flex-shrink:0}
+  .modal-header h2{font-size:1.1rem}
+  .modal-close{width:34px;height:34px;border-radius:50%;background:transparent;color:var(--muted);font-size:1.25rem;display:grid;place-items:center}
+  .modal-close:hover{background:var(--line);color:var(--ink)}
+  .modal-progress{display:flex;gap:6px;padding:12px 20px 0;flex-shrink:0}
+  .progress-dot{flex:1;height:4px;border-radius:4px;background:var(--line)}
+  .progress-dot.active{background:var(--teal)}
+  .progress-dot.done{background:var(--success)}
+  .modal-body{padding:18px 20px 8px;overflow-y:auto;flex:1}
+  .modal-footer{padding:14px 20px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:10px;background:var(--sand);flex-shrink:0}
+  .step-panel{display:none}
+  .step-panel.active{display:block}
+
+  .nav-arrow{width:52px;height:52px;border-radius:50%;background:var(--teal);color:#fff;display:grid;place-items:center;box-shadow:0 4px 14px rgba(13,92,99,.25);transition:all .2s;flex-shrink:0}
+  .nav-arrow:hover:not(:disabled){background:var(--teal-dark);transform:scale(1.05)}
+  .nav-arrow:disabled{background:#9bb6b9;box-shadow:none;cursor:not-allowed;opacity:.55;transform:none}
+  .nav-arrow svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+  .nav-arrow.is-hidden{visibility:hidden}
+
+  .map-shell{margin:0;border:1.5px solid var(--line);border-radius:12px;overflow:hidden;background:#eaf5f6;position:relative}
+  #leafletMap{height:min(58vh,460px);width:100%;background:#eaf5f6}
+  .leaflet-container{font-family:'Inter',sans-serif;background:#eaf5f6}
+  .leaflet-control-zoom a{color:var(--teal-dark) !important}
+
+  .map-error{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(139,0,0,.85);color:#fff;text-align:center;padding:20px;z-index:1000;font-family:Inter,sans-serif}
+  .map-error .icon{font-size:32px;margin-bottom:8px}
+  .map-error .title{font-weight:700;font-size:1rem;margin-bottom:6px}
+  .map-error .desc{font-size:.85rem;opacity:.9;max-width:380px;line-height:1.5}
+  .map-error code{background:rgba(255,255,255,.18);padding:2px 6px;border-radius:4px;font-family:monospace}
+
+  .map-selected{display:none;align-items:center;gap:10px;padding:10px 14px;margin-top:10px;background:#f0f9f4;border:1.5px solid #2a7d4f;border-radius:10px;font-size:.92rem}
+  .map-selected.show{display:flex}
+  .map-selected .check{color:#2a7d4f;font-weight:700;font-size:1rem}
+  .map-selected .place{font-weight:600;color:var(--ink)}
+  .map-selected .tier{margin-left:auto;font-size:.82rem;padding:3px 9px;border-radius:999px;font-weight:600}
+  .map-selected .tier.A{background:rgba(76,160,80,.18);color:#2e6a32}
+  .map-selected .tier.B{background:rgba(224,180,40,.22);color:#7a6020}
+  .map-selected .tier.C{background:rgba(224,96,64,.18);color:#8a3020}
+
+  .icon-grid{display:grid;gap:12px;margin-bottom:12px}
+  .icon-grid.c3{grid-template-columns:repeat(3,1fr)}
+  .icon-card{border:2px solid var(--line);border-radius:14px;padding:16px 8px;text-align:center;cursor:pointer;transition:all .2s;background:#fff;display:flex;flex-direction:column;align-items:center;gap:8px;user-select:none}
+  .icon-card:hover{border-color:#9bb6b9;background:#fafbf9}
+  .icon-card.active{border-color:var(--teal);background:var(--teal-light);box-shadow:0 4px 12px rgba(13,92,99,.15)}
+  .icon-card svg{width:44px;height:44px;stroke:var(--muted);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;transition:stroke .2s}
+  .icon-card.active svg{stroke:var(--teal-dark)}
+  .icon-card span{font-weight:600;font-size:.85rem;color:var(--muted);line-height:1.2}
+  .icon-card.active span{color:var(--teal-dark)}
+
+  .service-tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:16px}
+  .service-tab{position:relative;border:2px solid var(--line);border-radius:12px;padding:12px 6px 8px;background:#fff;cursor:pointer;transition:all .2s;display:flex;flex-direction:column;align-items:center;gap:6px;user-select:none}
+  .service-tab:hover{border-color:#9bb6b9}
+  .service-tab.active{border-color:var(--teal);background:var(--teal-light)}
+  .service-tab svg{width:32px;height:32px;stroke:var(--muted);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;transition:stroke .2s}
+  .service-tab.active svg{stroke:var(--teal-dark)}
+  .service-tab span{font-weight:600;font-size:.78rem;color:var(--muted)}
+  .service-tab.active span{color:var(--teal-dark)}
+  .service-tab .dot-indicator{position:absolute;top:6px;right:6px;width:8px;height:8px;border-radius:50%;background:var(--teal);display:none}
+  .service-tab.has-selection .dot-indicator{display:block}
+
+  .subservices-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:6px}
+  .subservice-card{border:2px solid var(--line);border-radius:10px;padding:12px 6px;background:#fff;cursor:pointer;transition:all .2s;display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;user-select:none}
+  .subservice-card:hover{border-color:#9bb6b9;background:#fafbf9}
+  .subservice-card.active{border-color:var(--teal);background:var(--teal-light)}
+  .subservice-card svg{width:28px;height:28px;stroke:var(--muted);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;transition:stroke .2s}
+  .subservice-card.active svg{stroke:var(--teal-dark)}
+  .subservice-card span{font-weight:500;font-size:.76rem;color:var(--muted);line-height:1.2}
+  .subservice-card.active span{color:var(--teal-dark);font-weight:600}
+
+  .contact-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:16px}
+  .contact-tab{border:2px solid var(--line);border-radius:10px;padding:12px 6px;background:#fff;cursor:pointer;transition:all .2s;display:flex;flex-direction:column;align-items:center;gap:6px;user-select:none}
+  .contact-tab:hover{border-color:#9bb6b9}
+  .contact-tab.active{border-color:var(--teal);background:var(--teal-light)}
+  .contact-tab svg{width:28px;height:28px;stroke:var(--muted);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+  .contact-tab.active svg{stroke:var(--teal-dark)}
+  .contact-tab span{font-weight:600;font-size:.82rem;color:var(--muted)}
+  .contact-tab.active span{color:var(--teal-dark)}
+
+  .form-group{margin-bottom:14px}
+  .form-group label{display:block;font-size:.85rem;font-weight:600;margin-bottom:6px}
+  .form-control{width:100%;padding:11px 13px;border-radius:10px;border:1.5px solid var(--line);background:#fff;font-size:.93rem;font-family:inherit;color:var(--ink);transition:border-color .15s}
+  .form-control:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px rgba(13,92,99,.12)}
+  .error-msg{color:#b42318;font-size:.8rem;margin-top:4px;display:none}
+  .form-group.has-error .form-control{border-color:#b42318}
+  .form-group.has-error .error-msg{display:block}
+
+  .checkbox-agree{display:flex;gap:11px;align-items:flex-start;margin-top:8px;font-size:.88rem}
+  .checkbox-agree input{margin-top:3px;accent-color:var(--teal);width:18px;height:18px;flex-shrink:0}
+
+  .success-panel{text-align:center;padding:22px 8px}
+  .success-icon{width:60px;height:60px;border-radius:50%;background:#e6f7ed;color:var(--success);display:grid;place-items:center;font-size:26px;margin:0 auto 14px}
+  .success-panel h3{margin-bottom:8px}
+  .success-panel p{color:var(--muted);font-size:.93rem}
+
+  @media (max-width:900px){
+    .hero{grid-template-columns:1fr;padding-top:32px;gap:28px}
+    .hero-visual{order:-1;max-width:420px;margin:0 auto}
+    .steps{grid-template-columns:1fr 1fr}
+    .testimonials{grid-template-columns:1fr}
+    .about-grid{grid-template-columns:1fr}
+    .contract-box{grid-template-columns:1fr}
+    .footer-inner{grid-template-columns:1fr 1fr}
+    .nav{display:none}
+    .menu-toggle{display:block}
+    .nav.open{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--sand);padding:14px 20px 22px;border-bottom:1px solid var(--line);gap:14px;align-items:stretch}
+  }
+  @media (max-width:560px){
+    .steps{grid-template-columns:1fr}
+    .hero-stats{grid-template-columns:1fr;gap:6px}
+    .footer-inner{grid-template-columns:1fr}
+    #leafletMap{height:min(52vh,340px)}
+    .nav-side{flex-direction:column;align-items:stretch;width:100%}
+    .lang-switch{justify-content:center}
+    .modal-body{padding:14px 16px 6px}
+    .modal-header{padding:12px 16px}
+    .modal-footer{padding:12px 16px}
+    .icon-card svg{width:36px;height:36px}
+    .icon-card span{font-size:.78rem}
+    .icon-card{padding:12px 4px}
+    .service-tab svg{width:26px;height:26px}
+    .service-tab span{font-size:.72rem}
+    .subservices-grid{grid-template-columns:repeat(2,1fr)}
+    .subservice-card svg{width:24px;height:24px}
+    .subservice-card span{font-size:.72rem}
+    .contact-tab svg{width:24px;height:24px}
+    .contact-tab span{font-size:.76rem}
+    .faq-item summary{padding:14px 16px;font-size:.93rem}
+    .faq-answer{padding:0 16px 16px;font-size:.88rem}
+  }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <a href="#" class="logo"><span class="logo-mark">DT</span>Dom Tenerife</a>
+    <nav class="nav" id="mainNav">
+      <a href="#about" data-i18n="nav.about">О нас</a>
+      <a href="#how" data-i18n="nav.how">Как работает</a>
+      <a href="#reviews" data-i18n="nav.reviews">Отзывы</a>
+      <a href="#contract" data-i18n="nav.contract">Договор</a>
+      <a href="#cabinet" data-i18n="nav.cabinet">Кабинет</a>
+    </nav>
+    <div class="nav-side">
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button class="lang-btn active" data-lang="ru">RU</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="es">ES</button>
+      </div>
+      <button class="btn btn-primary" onclick="openModal()" data-i18n="nav.cta">Рассчитать стоимость</button>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div>
+    <div class="hero-badge" data-i18n="hero.badge">Тенерифе · Уход за пустующей недвижимостью</div>
+    <h1 data-i18n-html="hero.title">Надёжный уход за <span>домом, квартирой и участком</span>, пока вас нет</h1>
+    <p class="hero-lead" data-i18n="hero.lead">Регулярные осмотры, сад, бассейн, координация ремонтов и прозрачная отчётность. Договор защищает вас от бесконтрольных расходов и утраты имущества.</p>
+    <div class="hero-cta">
+      <button class="btn btn-primary btn-lg" onclick="openModal()" data-i18n="hero.cta1">Рассчитать стоимость</button>
+      <a href="https://wa.me/34677588163" target="_blank" rel="noopener" class="btn btn-outline btn-lg">WhatsApp</a>
+    </div>
+    <p class="hero-note" data-i18n="hero.note">Без предоплаты на несколько месяцев · Отчёты с фото после каждого визита</p>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-visual-top">
+      <div class="hero-card"><strong data-i18n="hero.card.title">Следующий осмотр</strong><span data-i18n="hero.card.sub">Четверг, 10:30 · Отчёт с фото</span></div>
+    </div>
+    <div class="hero-visual-body">
+      <div class="hero-stats">
+        <div><strong data-i18n="hero.stat1.l">24/7</strong><span data-i18n="hero.stat1.s">Срочное реагирование</span></div>
+        <div><strong data-i18n="hero.stat2.l">1–4×</strong><span data-i18n="hero.stat2.s">визита в месяц</span></div>
+        <div><strong data-i18n="hero.stat3.l">€0</strong><span data-i18n="hero.stat3.s">скрытых расходов</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about" style="background:#fff">
+  <div class="container">
+    <span class="section-label" data-i18n="about.label">О нас</span>
+    <h2 class="section-title" data-i18n="about.title">Местная команда, которая бережёт вашу недвижимость</h2>
+    <p class="section-lead" data-i18n="about.lead">Мы работаем на Тенерифе и понимаем особенности пустующих домов и квартир: влажность, сад, бассейн, безопасность и координация местных мастеров.</p>
+    <div class="about-grid">
+      <div>
+        <ul class="about-list">
+          <li><span class="icon">1</span><div><strong data-i18n="about.item1.t">Только согласованные расходы</strong><br><span data-i18n="about.item1.d">Любой ремонт или покупка свыше небольшого лимита — только с вашего письменного разрешения.</span></div></li>
+          <li><span class="icon">2</span><div><strong data-i18n="about.item2.t">Фотоотчёт после каждого визита</strong><br><span data-i18n="about.item2.d">Вы видите состояние жилья, сада и бассейна в реальном времени.</span></div></li>
+          <li><span class="icon">3</span><div><strong data-i18n="about.item3.t">Чёткий договор</strong><br><span data-i18n="about.item3.d">Испанский шаблон с защитой заказчика и понятным объёмом работ для исполнителя.</span></div></li>
+          <li><span class="icon">4</span><div><strong data-i18n="about.item4.t">Без лишних ролей</strong><br><span data-i18n="about.item4.d">Мы не управляем арендой и не представляем вас юридически — только уход и координация.</span></div></li>
+        </ul>
+      </div>
+      <div class="about-card">
+        <h3 data-i18n="about.card.t">Что входит в базовый уход</h3>
+        <p style="color:var(--muted);font-size:.93rem;margin-bottom:12px" data-i18n="about.card.d">Осмотр жилья, сад, бассейн, гараж и участок — вы выбираете нужные пункты и частоту.</p>
+        <p style="font-size:.88rem" data-i18n="about.card.d2">Договор и приложение с перечнем услуг адаптируются под ваш объект. Перед подписанием вы видите полную стоимость и условия.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="container">
+    <span class="section-label" data-i18n="how.label">Процесс</span>
+    <h2 class="section-title" data-i18n="how.title">Как это работает</h2>
+    <p class="section-lead" data-i18n="how.lead">Простой процесс: вы описываете объект и нужные услуги — мы готовим предложение и договор.</p>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><h3 data-i18n="how.s1.t">Заявка</h3><p data-i18n="how.s1.d">Укажите тип объекта, зону на карте и отметьте нужные услуги из приложения к договору.</p></div>
+      <div class="step"><div class="step-num">2</div><h3 data-i18n="how.s2.t">Расчёт</h3><p data-i18n="how.s2.d">Мы готовим предложение с месячной стоимостью и лимитами срочных расходов.</p></div>
+      <div class="step"><div class="step-num">3</div><h3 data-i18n="how.s3.t">Договор</h3><p data-i18n="how.s3.d">Подписываете испанский контракт (при необходимости — билингва). Передаёте ключи по акту.</p></div>
+      <div class="step"><div class="step-num">4</div><h3 data-i18n="how.s4.t">Уход</h3><p data-i18n="how.s4.d">Регулярные визиты, отчёты с фото, срочные действия только в рамках договора.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="reviews" style="background:#fff">
+  <div class="container">
+    <span class="section-label" data-i18n="reviews.label">Клиенты</span>
+    <h2 class="section-title" data-i18n="reviews.title">Клиенты рекомендуют</h2>
+    <p class="section-lead" data-i18n="reviews.lead">Отзывы владельцев, которые оставляют недвижимость под нашим присмотром.</p>
+    <div class="testimonials">
+      <div class="testimonial"><p data-i18n="reviews.1.t">«Оставляли дом на 5 месяцев. Каждый визит — фотоотчёт, бассейн всегда в порядке. Никаких сюрпризов со счетами.»</p><div class="testimonial-author"><div class="avatar">АК</div><div><strong data-i18n="reviews.1.n">Андрей К.</strong><span data-i18n="reviews.1.a">Дом в Adeje</span></div></div></div>
+      <div class="testimonial"><p data-i18n="reviews.2.t">«Квартира пустовала почти год. Проветривание, проверка счётчиков и быстрый вызов сантехника — всё по договору.»</p><div class="testimonial-author"><div class="avatar">МР</div><div><strong data-i18n="reviews.2.n">Мария Р.</strong><span data-i18n="reviews.2.a">Квартира в Los Cristianos</span></div></div></div>
+      <div class="testimonial"><p data-i18n="reviews.3.t">«Важно было ограничить расходы. Лимит на срочные работы сработал — без согласования ничего лишнего не делали.»</p><div class="testimonial-author"><div class="avatar">ИС</div><div><strong data-i18n="reviews.3.n">Игорь С.</strong><span data-i18n="reviews.3.a">Участок + дом, Guía de Isora</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="contract">
+  <div class="container">
+    <span class="section-label" data-i18n="contract.label">Юридическая защита</span>
+    <h2 class="section-title" data-i18n="contract.title">Прозрачный договор</h2>
+    <div class="contract-box">
+      <div>
+        <p style="margin-bottom:6px" data-i18n="contract.lead">Шаблон на испанском языке, адаптированный под Тенерифе. Защищает заказчика от бесконтрольных расходов и одновременно даёт исполнителю ясный объём работ.</p>
+        <ul class="contract-points">
+          <li data-i18n="contract.p1">Нет права самостоятельно тратить крупные суммы без вашего согласия</li>
+          <li data-i18n="contract.p2">Обязательные отчёты с фотографиями</li>
+          <li data-i18n="contract.p3">Акт состояния объекта при передаче ключей</li>
+          <li data-i18n="contract.p4">Исключение ответственности за скрытые дефекты и форс-мажор</li>
+          <li data-i18n="contract.p5">Чёткий перечень услуг в приложении (Anexo I)</li>
+        </ul>
+      </div>
+      <div><button class="btn btn-primary" onclick="openModal()" data-i18n="contract.cta">Запросить расчёт</button></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq" style="background:#fff">
+  <div class="container">
+    <span class="section-label" data-i18n="faq.label">FAQ</span>
+    <h2 class="section-title" data-i18n="faq.title">Частые вопросы о договоре</h2>
+    <p class="section-lead" data-i18n="faq.lead">Ключевые моменты взаимодействия владельца и исполнителя — простыми словами, по тексту договора.</p>
+    <div class="faq-list">
+      <details class="faq-item"><summary data-i18n="faq.q1"></summary><div class="faq-answer" data-i18n="faq.a1"></div></details>
+      <details class="faq-item"><summary data-i18n="faq.q2"></summary><div class="faq-answer" data-i18n="faq.a2"></div></details>
+      <details class="faq-item"><summary data-i18n="faq.q3"></summary><div class="faq-answer" data-i18n="faq.a3"></div></details>
+      <details class="faq-item"><summary data-i18n="faq.q4"></summary><div class="faq-answer" data-i18n="faq.a4"></div></details>
+      <details class="faq-item"><summary data-i18n="faq.q5"></summary><div class="faq-answer" data-i18n="faq.a5"></div></details>
+      <details class="faq-item"><summary data-i18n="faq.q6"></summary><div class="faq-answer" data-i18n="faq.a6"></div></details>
+      <details class="faq-item"><summary data-i18n="faq.q7"></summary><div class="faq-answer" data-i18n="faq.a7"></div></details>
+      <details class="faq-item"><summary data-i18n="faq.q8"></summary><div class="faq-answer" data-i18n="faq.a8"></div></details>
+      <details class="faq-item"><summary data-i18n="faq.q9"></summary><div class="faq-answer" data-i18n="faq.a9"></div></details>
+      <details class="faq-item"><summary data-i18n="faq.q10"></summary><div class="faq-answer" data-i18n="faq.a10"></div></details>
+      <details class="faq-item"><summary data-i18n="faq.q11"></summary><div class="faq-answer" data-i18n="faq.a11"></div></details>
+      <details class="faq-item"><summary data-i18n="faq.q12"></summary><div class="faq-answer" data-i18n="faq.a12"></div></details>
+    </div>
+  </div>
+</section>
+
+<section id="cabinet">
+  <div class="container">
+    <div class="cabinet-stub">
+      <h2 data-i18n="cabinet.title">Личный кабинет</h2>
+      <p data-i18n="cabinet.lead">Скоро здесь появятся отчёты, фото после визитов, история расходов и договоры. Пока кабинет в разработке.</p>
+      <button class="btn btn-white" disabled data-i18n="cabinet.btn">Войти (скоро)</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">Dom Tenerife</div>
+      <p style="font-size:.88rem;max-width:280px" data-i18n="footer.tagline">Уход, осмотр и координация работ по недвижимости на Тенерифе. Работаем по договору.</p>
+    </div>
+    <div class="footer-col">
+      <h4 data-i18n="footer.sections">Разделы</h4>
+      <a href="#about" data-i18n="nav.about">О нас</a>
+      <a href="#how" data-i18n="nav.how">Как работает</a>
+      <a href="#reviews" data-i18n="nav.reviews">Отзывы</a>
+      <a href="#contract" data-i18n="nav.contract">Договор</a>
+    </div>
+    <div class="footer-col">
+      <h4 data-i18n="footer.contacts">Контакты</h4>
+      <a href="mailto:casacaretenerife@gmail.com">casacaretenerife@gmail.com</a>
+      <a href="https://wa.me/34677588163" target="_blank" rel="noopener">WhatsApp +34 677 588 163</a>
+      <p style="font-size:.83rem;margin-top:10px;color:#777" data-i18n="footer.location">Тенерифе, Испания</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span data-i18n="footer.copy">© 2026 Dom Tenerife. Шаблон договора — не является юридической консультацией.</span>
+    <span data-i18n="footer.langs">Скоро: 7–12 языков · билингвальные договоры</span>
+  </div>
+</footer>
+
+<div class="modal-overlay" id="modal">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-header">
+      <h2 id="modalTitle">Расчёт стоимости обслуживания</h2>
+      <button class="modal-close" onclick="closeModal()" aria-label="Close">×</button>
+    </div>
+    <div class="modal-progress" id="progress">
+      <div class="progress-dot active" data-step="1"></div>
+      <div class="progress-dot" data-step="2"></div>
+      <div class="progress-dot" data-step="3"></div>
+      <div class="progress-dot" data-step="4"></div>
+    </div>
+    <div class="modal-body" id="modalBody">
+
+      <div class="step-panel active" data-step="1">
+        <div class="map-shell">
+          <div id="leafletMap" role="application" aria-label="Tenerife map"></div>
+        </div>
+        <div class="map-selected" id="mapSelected">
+          <span class="check">✓</span>
+          <span class="place" id="mapSelectedPlace"></span>
+          <span class="tier" id="mapSelectedTier"></span>
+        </div>
+        <input type="hidden" id="address" />
+        <input type="hidden" id="zoneTier" />
+      </div>
+
+      <div class="step-panel" data-step="2">
+        <div class="icon-grid c3" id="objTypeGrid">
+          <div class="icon-card" data-value="house">
+            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+            <span data-i18n="s1.type.house">Дом</span>
+          </div>
+          <div class="icon-card" data-value="apartment">
+            <svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"></rect><path d="M9 22v-4h6v4"></path><path d="M8 6h.01M16 6h.01M12 6h.01M12 10h.01M12 14h.01M16 10h.01M16 14h.01M8 10h.01M8 14h.01"></path></svg>
+            <span data-i18n="s1.type.apartment">Квартира</span>
+          </div>
+          <div class="icon-card" data-value="land">
+            <svg viewBox="0 0 24 24"><path d="M12 22v-8"></path><path d="M12 14c-4.4 0-8-3.6-8-8h16c0 4.4-3.6 8-8 8z"></path></svg>
+            <span data-i18n="s1.type.land">Участок</span>
+          </div>
+        </div>
+        <div class="icon-grid c3" id="vacancyGrid">
+          <div class="icon-card" data-value="mostly">
+            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line><path d="M7 14h.01M11 14h.01M15 14h.01M7 18h.01M11 18h.01M15 18h.01M17 14h.01M17 18h.01"></path></svg>
+            <span data-i18n="s2.vacancy.mostly">Большую часть года</span>
+          </div>
+          <div class="icon-card" data-value="season">
+            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line><path d="M7 14h.01M11 14h.01M15 14h.01"></path></svg>
+            <span data-i18n="s2.vacancy.season">Сезонно</span>
+          </div>
+          <div class="icon-card" data-value="occasional">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            <span data-i18n="s2.vacancy.occasional">Периодически</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-panel" data-step="3">
+        <div class="service-tabs" id="serviceTabs">
+          <div class="service-tab active" data-tab="living">
+            <span class="dot-indicator"></span>
+            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+            <span data-i18n="s3.tab.living">Жильё</span>
+          </div>
+          <div class="service-tab" data-tab="garden">
+            <span class="dot-indicator"></span>
+            <svg viewBox="0 0 24 24"><path d="M12 22v-7"></path><path d="M12 15c-3 0-5-2-5-5 3 0 5 2 5 5z"></path><path d="M12 15c3 0 5-2 5-5-3 0-5 2-5 5z"></path><path d="M12 8c-1.5-1-2-2.5-1-4 1.5 1 2 2.5 1 4z"></path></svg>
+            <span data-i18n="s3.tab.garden">Сад</span>
+          </div>
+          <div class="service-tab" data-tab="pool">
+            <span class="dot-indicator"></span>
+            <svg viewBox="0 0 24 24"><path d="M2 16c2 0 3-2 5-2s3 2 5 2 3-2 5-2 3 2 5 2"></path><path d="M2 20c2 0 3-2 5-2s3 2 5 2 3-2 5-2 3 2 5 2"></path><path d="M6 12V5a2 2 0 0 1 4 0v7"></path><path d="M14 12V5a2 2 0 0 1 4 0v7"></path></svg>
+            <span data-i18n="s3.tab.pool">Бассейн</span>
+          </div>
+          <div class="service-tab" data-tab="garage">
+            <span class="dot-indicator"></span>
+            <svg viewBox="0 0 24 24"><path d="M3 21V9l9-6 9 6v12"></path><path d="M7 21V13h10v8"></path><line x1="7" y1="17" x2="17" y2="17"></line></svg>
+            <span data-i18n="s3.tab.garage">Гараж</span>
+          </div>
+        </div>
+        <div id="subservicesContainer"></div>
+      </div>
+
+      <div class="step-panel" data-step="4">
+        <div class="contact-tabs" id="contactTabs">
+          <div class="contact-tab active" data-value="email">
+            <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"></rect><polyline points="2,6 12,13 22,6"></polyline></svg>
+            <span>Email</span>
+          </div>
+          <div class="contact-tab" data-value="whatsapp">
+            <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+            <span>WhatsApp</span>
+          </div>
+          <div class="contact-tab" data-value="telegram">
+            <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+            <span>Telegram</span>
+          </div>
+        </div>
+
+        <div class="form-group" id="fg-email">
+          <label for="email" data-i18n="s4.email">Email</label>
+          <input type="email" class="form-control" id="email" placeholder="you@example.com">
+          <div class="error-msg" data-i18n="s4.email.err">Укажите корректный email</div>
+        </div>
+        <div class="form-group" id="fg-phone" style="display:none">
+          <label for="phone" data-i18n="s4.phone">Телефон</label>
+          <input type="tel" class="form-control" id="phone" placeholder="+34 …">
+          <div class="error-msg" data-i18n="s4.phone.err">Укажите номер</div>
+        </div>
+        <div class="form-group" id="fg-name">
+          <label for="name" data-i18n="s4.name">Имя</label>
+          <input type="text" class="form-control" id="name" placeholder="Как к вам обращаться">
+          <div class="error-msg" data-i18n="s4.name.err">Укажите имя</div>
+        </div>
+        <div class="form-group" id="fg-agree">
+          <label class="checkbox-agree">
+            <input type="checkbox" id="agree">
+            <span data-i18n="s4.agree">Я ознакомился(ась) с условиями и типовым договором обслуживания. Понимаю, что это предварительная заявка, а не заключение договора.</span>
+          </label>
+          <div class="error-msg" style="margin-left:30px" data-i18n="s4.agree.err">Необходимо подтвердить ознакомление</div>
+        </div>
+      </div>
+
+      <div class="step-panel" data-step="success">
+        <div class="success-panel">
+          <div class="success-icon">✓</div>
+          <h3 data-i18n="success.title">Заявка принята (демо)</h3>
+          <p data-i18n="success.text">В боевой версии сюда придёт уведомление с вашими данными и выбранными услугами. Сейчас отправка только имитируется.</p>
+          <p style="margin-top:10px;font-size:.88rem" data-i18n="success.text2">Мы свяжемся с вами удобным способом в ближайшее время.</p>
+          <div style="margin-top:22px;display:flex;flex-direction:column;gap:10px;align-items:stretch;max-width:340px;margin-left:auto;margin-right:auto">
+            <a id="tgCopyBtn" class="btn btn-primary" target="_blank" rel="noopener" style="display:none">Telegram</a>
+            <a id="waCopyBtn" class="btn btn-outline" target="_blank" rel="noopener" style="display:none">WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-footer" id="modalFooter">
+      <button class="nav-arrow is-hidden" id="btnPrev" onclick="prevStep()" aria-label="Назад">
+        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+      <button class="nav-arrow" id="btnNext" onclick="nextStep()" aria-label="Далее">
+        <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+<script>
+/* ============ КОНФИГ ============ */
+const MAP_IMAGE_CANDIDATES = ['tenerife-map.jpg','tenerife-map.png','tenerife-map.jpeg','map.jpg','map.png','tenerife.jpg'];
+const IMG_W = 1110, IMG_H = 963, COLS = 60, ROWS = 80;
+const CELL_W = IMG_W / COLS, CELL_H = IMG_H / ROWS;
+
+const TOWNS = [
+  {name:'Adeje', x:200, y:840},{name:'Costa Adeje', x:260, y:870},
+  {name:'Los Cristianos', x:360, y:890},{name:'Las Chafiras', x:450, y:890},
+  {name:'El Médano', x:550, y:920},{name:'San Isidro', x:520, y:870},
+  {name:'Granadilla', x:600, y:800},{name:'San Miguel', x:470, y:830},
+  {name:'Guía de Isora', x:250, y:760},{name:'Santiago del Teide', x:170, y:690},
+  {name:'Vilaflor', x:490, y:680},{name:'Icod de los Vinos', x:250, y:480},
+  {name:'Garachico', x:180, y:470},{name:'Buenavista', x:110, y:475},
+  {name:'El Tanque', x:220, y:520},{name:'Los Realejos', x:390, y:420},
+  {name:'Puerto de la Cruz', x:430, y:400},{name:'La Orotava', x:490, y:385},
+  {name:'La Matanza', x:560, y:345},{name:'Tacoronte', x:625, y:315},
+  {name:'Tegueste', x:700, y:300},{name:'La Laguna', x:740, y:280},
+  {name:'Santa Cruz', x:875, y:270},{name:'Anaga', x:960, y:230},
+  {name:'San Andrés', x:990, y:270},{name:'Candelaria', x:800, y:420},
+  {name:'Güímar', x:780, y:490},{name:'Arafo', x:780, y:540},
+  {name:'Arico', x:730, y:630},{name:'Fasnia', x:730, y:600},
+  {name:'Teide', x:490, y:555}
+];
+function nearestTown(pt){let best=null,bestD=Infinity;for(const t of TOWNS){const d=Math.hypot(pt[0]-t.x,pt[1]-t.y);if(d<bestD){bestD=d;best=t.name;}}return best;}
+
+/* ============ I18N ============ */
+const I18N = {
+  ru: {
+    'nav.about':'О нас','nav.how':'Как работает','nav.reviews':'Отзывы','nav.contract':'Договор','nav.cabinet':'Кабинет','nav.cta':'Рассчитать стоимость',
+    'hero.badge':'Тенерифе · Уход за пустующей недвижимостью',
+    'hero.title':'Надёжный уход за <span>домом, квартирой и участком</span>, пока вас нет',
+    'hero.lead':'Регулярные осмотры, сад, бассейн, координация ремонтов и прозрачная отчётность. Договор защищает вас от бесконтрольных расходов и утраты имущества.',
+    'hero.cta1':'Рассчитать стоимость','hero.cta2':'Как это работает',
+    'hero.note':'Без предоплаты на несколько месяцев · Отчёты с фото после каждого визита',
+    'hero.card.title':'Следующий осмотр','hero.card.sub':'Четверг, 10:30 · Отчёт с фото',
+    'hero.stat1.l':'24/7','hero.stat1.s':'Срочное реагирование',
+    'hero.stat2.l':'1–4×','hero.stat2.s':'визита в месяц',
+    'hero.stat3.l':'€0','hero.stat3.s':'скрытых расходов',
+    'about.label':'О нас','about.title':'Местная команда, которая бережёт вашу недвижимость',
+    'about.lead':'Мы работаем на Тенерифе и понимаем особенности пустующих домов и квартир: влажность, сад, бассейн, безопасность и координация местных мастеров.',
+    'about.item1.t':'Только согласованные расходы','about.item1.d':'Любой ремонт или покупка свыше небольшого лимита — только с вашего письменного разрешения.',
+    'about.item2.t':'Фотоотчёт после каждого визита','about.item2.d':'Вы видите состояние жилья, сада и бассейна в реальном времени.',
+    'about.item3.t':'Чёткий договор','about.item3.d':'Испанский шаблон с защитой заказчика и понятным объёмом работ для исполнителя.',
+    'about.item4.t':'Без лишних ролей','about.item4.d':'Мы не управляем арендой и не представляем вас юридически — только уход и координация.',
+    'about.card.t':'Что входит в базовый уход','about.card.d':'Осмотр жилья, сад, бассейн, гараж и участок — вы выбираете нужные пункты и частоту.',
+    'about.card.d2':'Договор и приложение с перечнем услуг адаптируются под ваш объект. Перед подписанием вы видите полную стоимость и условия.',
+    'how.label':'Процесс','how.title':'Как это работает','how.lead':'Простой процесс: вы описываете объект и нужные услуги — мы готовим предложение и договор.',
+    'how.s1.t':'Заявка','how.s1.d':'Укажите тип объекта, зону на карте и отметьте нужные услуги из приложения к договору.',
+    'how.s2.t':'Расчёт','how.s2.d':'Мы готовим предложение с месячной стоимостью и лимитами срочных расходов.',
+    'how.s3.t':'Договор','how.s3.d':'Подписываете испанский контракт (при необходимости — билингва). Передаёте ключи по акту.',
+    'how.s4.t':'Уход','how.s4.d':'Регулярные визиты, отчёты с фото, срочные действия только в рамках договора.',
+    'reviews.label':'Клиенты','reviews.title':'Клиенты рекомендуют','reviews.lead':'Отзывы владельцев, которые оставляют недвижимость под нашим присмотром.',
+    'reviews.1.t':'«Оставляли дом на 5 месяцев. Каждый визит — фотоотчёт, бассейн всегда в порядке. Никаких сюрпризов со счетами.»','reviews.1.n':'Андрей К.','reviews.1.a':'Дом в Adeje',
+    'reviews.2.t':'«Квартира пустовала почти год. Проветривание, проверка счётчиков и быстрый вызов сантехника — всё по договору.»','reviews.2.n':'Мария Р.','reviews.2.a':'Квартира в Los Cristianos',
+    'reviews.3.t':'«Важно было ограничить расходы. Лимит на срочные работы сработал — без согласования ничего лишнего не делали.»','reviews.3.n':'Игорь С.','reviews.3.a':'Участок + дом, Guía de Isora',
+    'contract.label':'Юридическая защита','contract.title':'Прозрачный договор',
+    'contract.lead':'Шаблон на испанском языке, адаптированный под Тенерифе. Защищает заказчика от бесконтрольных расходов и одновременно даёт исполнителю ясный объём работ.',
+    'contract.p1':'Нет права самостоятельно тратить крупные суммы без вашего согласия',
+    'contract.p2':'Обязательные отчёты с фотографиями',
+    'contract.p3':'Акт состояния объекта при передаче ключей',
+    'contract.p4':'Исключение ответственности за скрытые дефекты и форс-мажор',
+    'contract.p5':'Чёткий перечень услуг в приложении (Anexo I)','contract.cta':'Запросить расчёт',
+    'cabinet.title':'Личный кабинет','cabinet.lead':'Скоро здесь появятся отчёты, фото после визитов, история расходов и договоры. Пока кабинет в разработке.','cabinet.btn':'Войти (скоро)',
+    'footer.tagline':'Уход, осмотр и координация работ по недвижимости на Тенерифе. Работаем по договору.',
+    'footer.sections':'Разделы','footer.contacts':'Контакты','footer.location':'Тенерифе, Испания',
+    'footer.copy':'© 2026 Dom Tenerife. Шаблон договора — не является юридической консультацией.',
+    'footer.langs':'Скоро: 7–12 языков · билингвальные договоры',
+    'modal.title.pick':'Выберите место объекта на карте',
+    'modal.title.type':'Тип и частота',
+    'modal.title.services':'Нужные услуги',
+    'modal.title.contacts':'Контакты',
+    's1.type.house':'Дом','s1.type.apartment':'Квартира','s1.type.land':'Участок',
+    's2.vacancy.mostly':'Большую часть года','s2.vacancy.season':'Сезонно','s2.vacancy.occasional':'Периодически',
+    's3.tab.living':'Жильё','s3.tab.garden':'Сад','s3.tab.pool':'Бассейн','s3.tab.garage':'Гараж',
+    's3.living.inspect':'Осмотр','s3.living.air':'Проветривание','s3.living.meters':'Счётчики','s3.living.prep':'Подготовка к приезду','s3.living.coord':'Координация ремонта',
+    's3.garden.water':'Полив','s3.garden.weed':'Прополка','s3.garden.lawn':'Стрижка газона',
+    's3.pool.chem':'Химия воды','s3.pool.clean':'Чистка','s3.pool.equip':'Оборудование',
+    's3.garage.garage':'Гараж','s3.garage.land':'Участок','s3.garage.security':'Периметр',
+    's4.email':'Email','s4.email.err':'Укажите корректный email',
+    's4.phone':'Телефон','s4.phone.err':'Укажите номер',
+    's4.name':'Имя','s4.name.err':'Укажите имя',
+    's4.agree':'Я ознакомился(ась) с условиями и типовым договором обслуживания. Понимаю, что это предварительная заявка, а не заключение договора.',
+    's4.agree.err':'Необходимо подтвердить ознакомление',
+    'success.title':'Заявка принята (демо)','success.text':'В боевой версии сюда придёт уведомление с вашими данными и выбранными услугами. Сейчас отправка только имитируется.','success.text2':'Мы свяжемся с вами удобным способом в ближайшее время.',
+    'zone.tier.A':'Зона A','zone.tier.B':'Зона B','zone.tier.C':'Зона C',
+    'faq.label':'FAQ','faq.title':'Частые вопросы о договоре',
+    'faq.lead':'Ключевые моменты взаимодействия владельца и исполнителя — простыми словами, по тексту договора.',
+    'faq.q1':'Что входит в услуги?',
+    'faq.a1':'Регулярные осмотры жилья, сада, бассейна, гаража и участка. Проверка сантехники, электрики и техники. Проветривание, контроль протечек и плесени. Фотоотчёт после каждого визита. Координация мелкого ремонта и срочное реагирование. Управление арендой, агентские, юридические и налоговые услуги в объём не входят.',
+    'faq.q2':'Как контролируются расходы?',
+    'faq.a2':'Срочные меры (перекрыть воду, обезопасить дверь) — в пределах лимита из договора без предварительного согласования. Любые другие ремонты, покупки и работы — только с вашего письменного согласия и по смете. Все расходы подтверждаются счетами (factura).',
+    'faq.q3':'Как часто приходят отчёты?',
+    'faq.a3':'После каждого визита: дата, список работ, фото жилья, сада, бассейна и гаража, показатели воды (pH, хлор), показания счётчиков, обнаруженные проблемы и предложения по ремонту. О серьёзных инцидентах уведомляем в течение 24 часов, о срочных — немедленно.',
+    'faq.q4':'Что с ключами и доступом?',
+    'faq.a4':'Все ключи, пульты и коды передаются по акту (Anexo III). Исполнитель хранит их безопасно, не передаёт третьим лицам без вашего письменного согласия, уведомляет о доступе специалистов и возвращает всё в конце договора.',
+    'faq.q5':'Кто отвечает за ущерб?',
+    'faq.a5':'Исполнитель отвечает за прямой ущерб от его небрежности или нарушения договора. Не отвечает за дефекты, существовавшие до подписания, скрытые дефекты конструкций, действия третьих лиц, форс-мажор и естественный износ. У исполнителя есть страховка ответственности — копия предоставляется при подписании.',
+    'faq.q6':'Можно ли расторгнуть договор?',
+    'faq.a6':'Да, в любой момент с уведомлением за 30 дней. Досрочно — при серьёзном нарушении, неоплате двух месяцев (после письменного требования и 15 дней), потере доверия или форс-мажоре свыше 30 дней. Ключи и документы возвращаются вместе с финальным отчётом.',
+    'faq.q7':'Как происходит оплата?',
+    'faq.a7':'Ежемесячно, банковским переводом, по счёту (factura), в течение указанного в договоре срока. Предоплата более чем за один месяц не требуется. Сверху — IVA, если применимо. Первый месяц оплачивается после подписания и акта состояния объекта.',
+    'faq.q8':'Что при срочной аварии?',
+    'faq.a8':'Исполнитель имеет право принять разумные срочные меры (перекрыть воду, обезопасить дверь, вызвать аварийную службу) в пределах лимита из договора, если нет возможности получить ваше согласие. О случившемся уведомляется сразу, с приложением чеков и фото.',
+    'faq.q9':'Можно ли привлекать специалистов?',
+    'faq.a9':'Да, для работ, требующих квалификации (электрик, сантехник, газ, кондиционеры, высотные работы), — только лицензированные специалисты. Исполнитель согласует это с вами, контролирует работу и остаётся ответственным за её качество.',
+    'faq.q10':'Как обеспечивается конфиденциальность?',
+    'faq.a10':'Исполнитель не разглашает адрес, состояние, содержимое дома, коды, ключи и ваши личные данные. Обязательство сохраняется и после окончания договора. Данные обрабатываются по RGPD. Фото и отчёты не публикуются без вашего письменного согласия.',
+    'faq.q11':'Какие сроки и как работает продление?',
+    'faq.a11':'Первоначальный срок — как указано в договоре. Затем продлевается автоматически на месяц в тех же условиях. Чтобы не продлевать — уведомите за 30 дней. Это удобно для владельцев, приезжающих сезонно.',
+    'faq.q12':'Как передать ключи и начать обслуживание?',
+    'faq.a12':'Перед стартом подписываем договор и акт состояния объекта (Anexo IV) с фотофиксацией. Вы передаёте ключи и доступы по описи (Anexo III). С этого момента начинаются визиты и ежемесячные отчёты. Первый месяц оплачивается после подписания.'
+  },
+  en: {
+    'nav.about':'About','nav.how':'How it works','nav.reviews':'Reviews','nav.contract':'Contract','nav.cabinet':'Account','nav.cta':'Get a quote',
+    'hero.badge':'Tenerife · Care for vacant property',
+    'hero.title':'Reliable care for your <span>home, apartment and land</span> while you\u2019re away',
+    'hero.lead':'Regular inspections, garden, pool, repair coordination and transparent reporting. The contract protects you from uncontrolled expenses and property loss.',
+    'hero.cta1':'Get a quote','hero.cta2':'How it works',
+    'hero.note':'No upfront multi-month payments · Photo reports after every visit',
+    'hero.card.title':'Next inspection','hero.card.sub':'Thursday, 10:30 · Photo report',
+    'hero.stat1.l':'24/7','hero.stat1.s':'Emergency response',
+    'hero.stat2.l':'1–4×','hero.stat2.s':'visits per month',
+    'hero.stat3.l':'€0','hero.stat3.s':'hidden costs',
+    'about.label':'About us','about.title':'A local team that takes care of your property',
+    'about.lead':'We work on Tenerife and understand the specifics of vacant homes and apartments: humidity, garden, pool, security and coordination of local specialists.',
+    'about.item1.t':'Approved expenses only','about.item1.d':'Any repair or purchase above a small limit requires your written approval.',
+    'about.item2.t':'Photo report after every visit','about.item2.d':'You see the state of the home, garden and pool in real time.',
+    'about.item3.t':'Clear contract','about.item3.d':'Spanish template that protects the client and gives the contractor a clear scope.',
+    'about.item4.t':'No extra roles','about.item4.d':'We don\u2019t manage rentals and don\u2019t represent you legally — only care and coordination.',
+    'about.card.t':'What\u2019s included','about.card.d':'Home inspection, garden, pool, garage and land — you choose the items and frequency.',
+    'about.card.d2':'The contract and its annexes are adapted to your property. Before signing, you see the full cost and terms.',
+    'how.label':'Process','how.title':'How it works','how.lead':'A simple process: you describe the property and the services you need — we prepare a proposal and a contract.',
+    'how.s1.t':'Request','how.s1.d':'Specify property type, pick a zone on the map and tick the services from the contract annex.',
+    'how.s2.t':'Quote','how.s2.d':'We prepare a proposal with a monthly price and limits for urgent expenses.',
+    'how.s3.t':'Contract','how.s3.d':'You sign the Spanish contract (bilingual if needed). Keys are handed over by an act.',
+    'how.s4.t':'Care','how.s4.d':'Regular visits, photo reports, urgent actions only within the contract.',
+    'reviews.label':'Clients','reviews.title':'Clients recommend us','reviews.lead':'Reviews from owners who entrust us with their property.',
+    'reviews.1.t':'\u00ABWe left the house for 5 months. Every visit — photo report, pool always in order. No surprises on invoices.\u00BB','reviews.1.n':'Andrey K.','reviews.1.a':'House in Adeje',
+    'reviews.2.t':'\u00ABThe apartment was empty for almost a year. Ventilation, meter readings and quick plumber call \u2014 all per contract.\u00BB','reviews.2.n':'Maria R.','reviews.2.a':'Apartment in Los Cristianos',
+    'reviews.3.t':'\u00ABLimiting expenses was key. The urgent-work limit worked \u2014 nothing extra without approval.\u00BB','reviews.3.n':'Igor S.','reviews.3.a':'Land + house, Guía de Isora',
+    'contract.label':'Legal protection','contract.title':'Transparent contract',
+    'contract.lead':'Spanish-language template adapted for Tenerife. Protects the client from uncontrolled spending and gives the contractor a clear scope.',
+    'contract.p1':'No right to spend large sums without your approval',
+    'contract.p2':'Mandatory photo reports',
+    'contract.p3':'Property condition act when keys are handed over',
+    'contract.p4':'Exclusion of liability for hidden defects and force majeure',
+    'contract.p5':'Clear service list in the annex (Anexo I)','contract.cta':'Request a quote',
+    'cabinet.title':'Personal account','cabinet.lead':'Soon you\u2019ll find reports, visit photos, expense history and contracts here. Currently in development.','cabinet.btn':'Sign in (soon)',
+    'footer.tagline':'Care, inspection and coordination of property works on Tenerife. We work by contract.',
+    'footer.sections':'Sections','footer.contacts':'Contacts','footer.location':'Tenerife, Spain',
+    'footer.copy':'© 2026 Dom Tenerife. The contract template is not legal advice.',
+    'footer.langs':'Coming soon: 7–12 languages · bilingual contracts',
+    'modal.title.pick':'Choose the property location on the map',
+    'modal.title.type':'Type and frequency',
+    'modal.title.services':'Services you need',
+    'modal.title.contacts':'Contacts',
+    's1.type.house':'House','s1.type.apartment':'Apartment','s1.type.land':'Land plot',
+    's2.vacancy.mostly':'Most of the year','s2.vacancy.season':'Seasonally','s2.vacancy.occasional':'Occasionally',
+    's3.tab.living':'Living','s3.tab.garden':'Garden','s3.tab.pool':'Pool','s3.tab.garage':'Garage',
+    's3.living.inspect':'Inspection','s3.living.air':'Ventilation','s3.living.meters':'Meters','s3.living.prep':'Arrival prep','s3.living.coord':'Repair coordination',
+    's3.garden.water':'Watering','s3.garden.weed':'Weeding','s3.garden.lawn':'Lawn mowing',
+    's3.pool.chem':'Pool chemistry','s3.pool.clean':'Cleaning','s3.pool.equip':'Equipment',
+    's3.garage.garage':'Garage','s3.garage.land':'Plot','s3.garage.security':'Perimeter',
+    's4.email':'Email','s4.email.err':'Enter a valid email',
+    's4.phone':'Phone','s4.phone.err':'Enter a phone number',
+    's4.name':'Name','s4.name.err':'Enter your name',
+    's4.agree':'I have read the terms and the standard service contract. I understand this is a preliminary request, not a contract.',
+    's4.agree.err':'Please confirm that you have read the terms',
+    'success.title':'Request received (demo)','success.text':'In production, a notification with your data and selected services would arrive here. Sending is currently simulated.','success.text2':'We will contact you in your preferred way shortly.',
+    'zone.tier.A':'Zone A','zone.tier.B':'Zone B','zone.tier.C':'Zone C',
+    'faq.label':'FAQ','faq.title':'Frequent questions about the contract',
+    'faq.lead':'Key points of interaction between owner and contractor — in plain words, based on the contract text.',
+    'faq.q1':'What is included in the service?',
+    'faq.a1':'Regular inspections of the home, garden, pool, garage and plot. Checks of plumbing, electrics and appliances. Ventilation, leak and mould control. Photo report after every visit. Coordination of minor repairs and emergency response. Rental management, agency, legal and tax services are not included.',
+    'faq.q2':'How are expenses controlled?',
+    'faq.a2':'Emergency measures (shutting off water, securing a door) — up to the contract limit without prior approval. Any other repairs, purchases and works require your written approval and a quote. All expenses are backed by invoices (factura).',
+    'faq.q3':'How often are reports sent?',
+    'faq.a3':'After every visit: date, list of works, photos of the home, garden, pool and garage, water readings (pH, chlorine), meter readings, issues found and repair proposals. For serious incidents we notify within 24 hours; for emergencies immediately.',
+    'faq.q4':'What about keys and access?',
+    'faq.a4':'All keys, remotes and codes are handed over by an inventory act (Anexo III). The contractor stores them safely, does not pass them to third parties without your written consent, notifies you when specialists need access, and returns everything at the end of the contract.',
+    'faq.q5':'Who is liable for damage?',
+    'faq.a5':'The contractor is liable for direct damage caused by their negligence or breach of contract. Not liable for defects that existed before signing, hidden structural defects, acts of third parties, force majeure, and normal wear. The contractor holds liability insurance — copy provided on signing.',
+    'faq.q6':'Can I cancel the contract?',
+    'faq.a6':'Yes, at any time with 30 days notice. Early termination — for serious breach, non-payment of two months (after written notice and 15 days), loss of trust, or force majeure over 30 days. Keys and documents are returned together with a final report.',
+    'faq.q7':'How does payment work?',
+    'faq.a7':'Monthly, by bank transfer, against an invoice (factura), within the term stated in the contract. No prepayment beyond one month. Plus IVA where applicable. The first month is paid after signing and the property condition act.',
+    'faq.q8':'What happens in an emergency?',
+    'faq.a8':'The contractor may take reasonable emergency measures (shut off water, secure a door, call an emergency service) within the contract limit when your approval cannot be obtained. You are notified immediately, with receipts and photos attached.',
+    'faq.q9':'Can specialists be brought in?',
+    'faq.a9':'Yes — for works that require qualifications (electrician, plumber, gas, air conditioning, high-altitude work), only licensed specialists are used. The contractor agrees this with you, supervises the work and remains responsible for its quality.',
+    'faq.q10':'How is confidentiality ensured?',
+    'faq.a10':'The contractor does not disclose the address, condition, contents, codes, keys or your personal data. The obligation continues after the contract ends. Data is processed under GDPR. Photos and reports are not published without your written consent.',
+    'faq.q11':'What is the term and how does renewal work?',
+    'faq.a11':'The initial term is as stated in the contract. It then renews automatically month by month on the same terms. To stop the renewal, notify 30 days in advance. This suits owners who visit seasonally.',
+    'faq.q12':'How do I hand over keys and start?',
+    'faq.a12':'Before starting we sign the contract and the property condition act (Anexo IV) with photo documentation. You hand over keys and access by inventory (Anexo III). Visits and monthly reporting begin from that moment. The first month is paid after signing.'
+  },
+  es: {
+    'nav.about':'Nosotros','nav.how':'Cómo funciona','nav.reviews':'Reseñas','nav.contract':'Contrato','nav.cabinet':'Cuenta','nav.cta':'Solicitar precio',
+    'hero.badge':'Tenerife · Cuidado de propiedades vacías',
+    'hero.title':'Cuidado fiable de su <span>casa, apartamento y terreno</span> mientras no está',
+    'hero.lead':'Inspecciones periódicas, jardín, piscina, coordinación de reparaciones y reportes transparentes. El contrato le protege de gastos sin control y de la pérdida de bienes.',
+    'hero.cta1':'Solicitar precio','hero.cta2':'Cómo funciona',
+    'hero.note':'Sin prepago de varios meses · Reporte con fotos tras cada visita',
+    'hero.card.title':'Próxima inspección','hero.card.sub':'Jueves, 10:30 · Reporte con fotos',
+    'hero.stat1.l':'24/7','hero.stat1.s':'Respuesta urgente',
+    'hero.stat2.l':'1–4×','hero.stat2.s':'visitas al mes',
+    'hero.stat3.l':'€0','hero.stat3.s':'gastos ocultos',
+    'about.label':'Nosotros','about.title':'Un equipo local que cuida su propiedad',
+    'about.lead':'Trabajamos en Tenerife y conocemos las particularidades de viviendas vacías: humedad, jardín, piscina, seguridad y coordinación de profesionales locales.',
+    'about.item1.t':'Solo gastos aprobados','about.item1.d':'Cualquier reparación o compra por encima de un pequeño límite requiere su aprobación escrita.',
+    'about.item2.t':'Reporte con fotos tras cada visita','about.item2.d':'Ve el estado de la vivienda, el jardín y la piscina en tiempo real.',
+    'about.item3.t':'Contrato claro','about.item3.d':'Plantilla española que protege al cliente y da al prestador un alcance definido.',
+    'about.item4.t':'Sin roles adicionales','about.item4.d':'No gestionamos alquileres ni le representamos legalmente — solo cuidado y coordinación.',
+    'about.card.t':'Qué incluye el servicio básico','about.card.d':'Inspección, jardín, piscina, garaje y terreno — usted elige los puntos y la frecuencia.',
+    'about.card.d2':'El contrato y sus anexos se adaptan a su propiedad. Antes de firmar, ve el coste completo y las condiciones.',
+    'how.label':'Proceso','how.title':'Cómo funciona','how.lead':'Un proceso simple: usted describe la propiedad y los servicios — nosotros preparamos la oferta y el contrato.',
+    'how.s1.t':'Solicitud','how.s1.d':'Indique el tipo de propiedad, elija la zona en el mapa y marque los servicios del anexo al contrato.',
+    'how.s2.t':'Presupuesto','how.s2.d':'Preparamos una oferta con precio mensual y límites para gastos urgentes.',
+    'how.s3.t':'Contrato','how.s3.d':'Firma el contrato español (bilingüe si es necesario). Entrega las llaves mediante acta.',
+    'how.s4.t':'Cuidado','how.s4.d':'Visitas periódicas, reportes con fotos y acciones urgentes solo dentro del contrato.',
+    'reviews.label':'Clientes','reviews.title':'Los clientes nos recomiendan','reviews.lead':'Opiniones de propietarios que confían en nosotros el cuidado de su propiedad.',
+    'reviews.1.t':'«Dejamos la casa 5 meses. Cada visita — reporte con fotos, piscina siempre en orden. Sin sorpresas en las facturas.»','reviews.1.n':'Andrei K.','reviews.1.a':'Casa en Adeje',
+    'reviews.2.t':'«El apartamento estuvo vacío casi un año. Ventilación, lectura de contadores y fontanero rápido — todo según contrato.»','reviews.2.n':'María R.','reviews.2.a':'Apartamento en Los Cristianos',
+    'reviews.3.t':'«Era importante limitar los gastos. El límite de urgencias funcionó — sin aprobación no hicieron nada extra.»','reviews.3.n':'Ígor S.','reviews.3.a':'Terreno + casa, Guía de Isora',
+    'contract.label':'Protección legal','contract.title':'Contrato transparente',
+    'contract.lead':'Plantilla en español adaptada a Tenerife. Protege al cliente de gastos sin control y da al prestador un alcance claro.',
+    'contract.p1':'Sin derecho a gastar grandes sumas sin su aprobación',
+    'contract.p2':'Reportes con fotos obligatorios',
+    'contract.p3':'Acta del estado de la propiedad al entregar las llaves',
+    'contract.p4':'Exclusión de responsabilidad por defectos ocultos y fuerza mayor',
+    'contract.p5':'Lista clara de servicios en el anexo (Anexo I)','contract.cta':'Solicitar presupuesto',
+    'cabinet.title':'Área personal','cabinet.lead':'Pronto encontrará aquí reportes, fotos de visitas, historial de gastos y contratos. En desarrollo.','cabinet.btn':'Entrar (pronto)',
+    'footer.tagline':'Cuidado, inspección y coordinación de trabajos en propiedades de Tenerife. Trabajamos con contrato.',
+    'footer.sections':'Secciones','footer.contacts':'Contactos','footer.location':'Tenerife, España',
+    'footer.copy':'© 2026 Dom Tenerife. La plantilla de contrato no es asesoramiento legal.',
+    'footer.langs':'Próximamente: 7–12 idiomas · contratos bilingües',
+    'modal.title.pick':'Elija la ubicación del objeto en el mapa',
+    'modal.title.type':'Tipo y frecuencia',
+    'modal.title.services':'Servicios necesarios',
+    'modal.title.contacts':'Contacto',
+    's1.type.house':'Casa','s1.type.apartment':'Apartamento','s1.type.land':'Terreno',
+    's2.vacancy.mostly':'La mayor parte del año','s2.vacancy.season':'Temporal','s2.vacancy.occasional':'De vez en cuando',
+    's3.tab.living':'Vivienda','s3.tab.garden':'Jardín','s3.tab.pool':'Piscina','s3.tab.garage':'Garaje',
+    's3.living.inspect':'Inspección','s3.living.air':'Ventilación','s3.living.meters':'Contadores','s3.living.prep':'Preparar llegada','s3.living.coord':'Coordinar reparación',
+    's3.garden.water':'Riego','s3.garden.weed':'Deshierbe','s3.garden.lawn':'Cortar césped',
+    's3.pool.chem':'Química del agua','s3.pool.clean':'Limpieza','s3.pool.equip':'Equipo',
+    's3.garage.garage':'Garaje','s3.garage.land':'Terreno','s3.garage.security':'Perímetro',
+    's4.email':'Email','s4.email.err':'Introduzca un email válido',
+    's4.phone':'Teléfono','s4.phone.err':'Introduzca un teléfono',
+    's4.name':'Nombre','s4.name.err':'Introduzca su nombre',
+    's4.agree':'He leído las condiciones y el contrato tipo de servicio. Entiendo que es una solicitud preliminar, no un contrato.',
+    's4.agree.err':'Debe confirmar que ha leído las condiciones',
+    'success.title':'Solicitud recibida (demo)','success.text':'En producción, aquí llegaría una notificación con sus datos y servicios seleccionados. Actualmente el envío está simulado.','success.text2':'Nos pondremos en contacto por su método preferido en breve.',
+    'zone.tier.A':'Zona A','zone.tier.B':'Zona B','zone.tier.C':'Zona C',
+    'faq.label':'FAQ','faq.title':'Preguntas frecuentes sobre el contrato',
+    'faq.lead':'Puntos clave de la interacción entre propietario y prestador — en lenguaje sencillo, según el texto del contrato.',
+    'faq.q1':'¿Qué incluye el servicio?',
+    'faq.a1':'Inspecciones periódicas de la vivienda, jardín, piscina, garaje y terreno. Revisión de fontanería, electricidad y electrodomésticos. Ventilación y control de fugas y moho. Reporte con fotos tras cada visita. Coordinación de pequeñas reparaciones y respuesta urgente. La gestión de alquileres, servicios de agencia, legales y fiscales no están incluidos.',
+    'faq.q2':'¿Cómo se controlan los gastos?',
+    'faq.a2':'Medidas urgentes (cortar el agua, asegurar una puerta) — hasta el límite del contrato sin aprobación previa. Cualquier otra reparación, compra o trabajo requiere su aprobación escrita y presupuesto. Todos los gastos se justifican con factura.',
+    'faq.q3':'¿Con qué frecuencia llegan los informes?',
+    'faq.a3':'Tras cada visita: fecha, lista de trabajos, fotos de la vivienda, jardín, piscina y garaje, parámetros del agua (pH, cloro), lectura de contadores, incidencias y propuestas de reparación. En incidencias graves avisamos en 24 horas; en urgencias, de inmediato.',
+    'faq.q4':'¿Qué pasa con las llaves y el acceso?',
+    'faq.a4':'Todas las llaves, mandos y códigos se entregan mediante acta (Anexo III). El prestador los guarda de forma segura, no los cede a terceros sin su consentimiento escrito, avisa cuando un especialista necesita acceso y devuelve todo al finalizar el contrato.',
+    'faq.q5':'¿Quién responde por daños?',
+    'faq.a5':'El prestador responde de los daños directos causados por su negligencia o incumplimiento. No responde de defectos preexistentes, defectos ocultos de la construcción, actos de terceros, fuerza mayor ni desgaste normal. El prestador dispone de seguro de responsabilidad — copia entregada al firmar.',
+    'faq.q6':'¿Puedo cancelar el contrato?',
+    'faq.a6':'Sí, en cualquier momento con 30 días de preaviso. Resolución anticipada por incumplimiento grave, impago de dos mensualidades (tras requerimiento escrito y 15 días), pérdida de confianza o fuerza mayor superior a 30 días. Las llaves y documentos se devuelven con un informe final.',
+    'faq.q7':'¿Cómo funciona el pago?',
+    'faq.a7':'Mensualmente, por transferencia bancaria, contra factura, dentro del plazo indicado en el contrato. No se exige prepago superior a un mes. Más IVA cuando corresponda. La primera mensualidad se abona tras la firma y el acta de estado del inmueble.',
+    'faq.q8':'¿Qué pasa en una emergencia?',
+    'faq.a8':'El prestador puede tomar medidas urgentes razonables (cortar el agua, asegurar una puerta, llamar a un servicio de urgencias) dentro del límite del contrato cuando no sea posible obtener su aprobación. Se le informa de inmediato, con recibos y fotos adjuntos.',
+    'faq.q9':'¿Se pueden contratar especialistas?',
+    'faq.a9':'Sí — para trabajos que requieran cualificación (electricista, fontanero, gas, aire acondicionado, trabajos en altura) solo se usan profesionales habilitados. El prestador lo acuerda con usted, supervisa el trabajo y sigue siendo responsable de su calidad.',
+    'faq.q10':'¿Cómo se garantiza la confidencialidad?',
+    'faq.a10':'El prestador no revela la dirección, el estado, el contenido, los códigos, las llaves ni sus datos personales. La obligación continúa después del contrato. Los datos se tratan según el RGPD. Las fotos e informes no se publican sin su consentimiento escrito.',
+    'faq.q11':'¿Cuál es el plazo y cómo funciona la renovación?',
+    'faq.a11':'El plazo inicial es el indicado en el contrato. Después se prorroga automáticamente mes a mes en las mismas condiciones. Para no renovar, avise con 30 días de antelación. Cómodo para propietarios que vienen por temporadas.',
+    'faq.q12':'¿Cómo entrego las llaves y empiezo?',
+    'faq.a12':'Antes de empezar firmamos el contrato y el acta de estado del inmueble (Anexo IV) con fotos. Usted entrega llaves y accesos según inventario (Anexo III). Desde ese momento comienzan las visitas y el reporte mensual. La primera mensualidad se abona tras la firma.'
+  }
+};
+
+let currentLang = localStorage.getItem('lang') || 'en';
+let currentStep = 1;
+const totalSteps = 4;
+let zoneSelected = false;
+let selectedZoneInfo = null;
+
+/* ============ I18N ============ */
+const SEO_META = {
+  ru:{title:'Dom Tenerife — Уход за недвижимостью на Тенерифе',description:'Регулярные осмотры, уход за садом, бассейном и координация ремонтов для пустующих домов, квартир и участков на Тенерифе. Прозрачный договор, фиксированная стоимость, фотоотчёт после каждого визита.',ogLocale:'ru_RU',path:'/ru/'},
+  en:{title:'Dom Tenerife — Property care and management in Tenerife',description:'Regular inspections, garden, pool and repair coordination for vacant homes, apartments and land in Tenerife. Transparent contract, fixed monthly price, photo reports after every visit.',ogLocale:'en_US',path:'/en/'},
+  es:{title:'Dom Tenerife — Gestión y cuidado de propiedades en Tenerife',description:'Inspecciones periódicas, jardín, piscina y coordinación de reparaciones para viviendas vacías en Tenerife. Contrato transparente, precio mensual fijo, reporte con fotos tras cada visita.',ogLocale:'es_ES',path:'/es/'}
+};
+
+function updateModalTitle(){
+  const map={1:'modal.title.pick',2:'modal.title.type',3:'modal.title.services',4:'modal.title.contacts'};
+  const key=map[currentStep];
+  const el=document.getElementById('modalTitle');
+  if(el&&key) el.textContent=I18N[currentLang][key];
+}
+
+function updateSeo(){
+  const m=SEO_META[currentLang]||SEO_META.en;
+  const base=(window.APP_CONFIG&&window.APP_CONFIG.pagesUrl)||'https://casacaretenerife.pages.dev';
+  const abs=base+m.path;
+  document.title=m.title;
+  const d=document.querySelector('meta[name="description"]'); if(d)d.content=m.description;
+  const c=document.getElementById('canonicalLink'); if(c)c.href=abs;
+  const ot=document.getElementById('ogTitle'); if(ot)ot.content=m.title;
+  const od=document.getElementById('ogDescription'); if(od)od.content=m.description;
+  const ou=document.getElementById('ogUrl'); if(ou)ou.content=abs;
+  const ol=document.getElementById('ogLocale'); if(ol)ol.content=m.ogLocale;
+  const tt=document.getElementById('twTitle'); if(tt)tt.content=m.title;
+  const td=document.getElementById('twDescription'); if(td)td.content=m.description;
+  document.documentElement.lang=currentLang;
+  document.querySelectorAll('link[rel="alternate"][hreflang]').forEach(link=>{
+    const l=link.getAttribute('hreflang');
+    link.href=l==='x-default'?base+'/en/':base+'/'+l+'/';
+  });
+  renderFaqJsonLd();
+}
+
+function renderFaqJsonLd(){
+  const items=[];
+  for(let i=1;i<=12;i++){
+    const q=I18N[currentLang]['faq.q'+i];
+    const a=I18N[currentLang]['faq.a'+i];
+    if(q&&a) items.push({'@type':'Question',name:q,acceptedAnswer:{'@type':'Answer',text:a}});
+  }
+  const el=document.getElementById('jsonld-faq');
+  if(el) el.textContent=JSON.stringify({'@context':'https://schema.org','@type':'FAQPage',inLanguage:currentLang,mainEntity:items});
+}
+
+function setLang(lang){
+  if(!I18N[lang]) lang='en';
+  currentLang=lang;
+  localStorage.setItem('lang',lang);
+  document.documentElement.lang=lang;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const v=I18N[lang][el.dataset.i18n];
+    if(v!==undefined) el.textContent=v;
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el=>{
+    const v=I18N[lang][el.dataset.i18nHtml];
+    if(v!==undefined) el.innerHTML=v;
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>{
+    const v=I18N[lang][el.dataset.i18nPlaceholder];
+    if(v!==undefined) el.placeholder=v;
+  });
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.dataset.lang===lang));
+  updateModalTitle();
+  if(selectedZoneInfo) renderZoneRow(selectedZoneInfo);
+  if(typeof renderSubservices==='function') renderSubservices();
+  updateSeo();
+}
+document.querySelectorAll('.lang-btn').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
+
+/* ============ ШАГ 2 ============ */
+let selectedObjType='', selectedVacancy='';
+document.querySelectorAll('#objTypeGrid .icon-card').forEach(card=>{
+  card.addEventListener('click',()=>{
+    document.querySelectorAll('#objTypeGrid .icon-card').forEach(c=>c.classList.remove('active'));
+    card.classList.add('active');
+    selectedObjType=card.dataset.value;
+    updateNextButton();
+  });
+});
+document.querySelectorAll('#vacancyGrid .icon-card').forEach(card=>{
+  card.addEventListener('click',()=>{
+    document.querySelectorAll('#vacancyGrid .icon-card').forEach(c=>c.classList.remove('active'));
+    card.classList.add('active');
+    selectedVacancy=card.dataset.value;
+    updateNextButton();
+  });
+});
+
+/* ============ ШАГ 3 ============ */
+const servicesState={living:new Set(),garden:new Set(),pool:new Set(),garage:new Set()};
+let activeTab='living';
+
+const SUBSERVICES={
+  living:[
+    {key:'inspect',value:'inspect',icon:'<circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>'},
+    {key:'air',value:'air',icon:'<path d="M9 5H2M22 12h-9m9 7h-8M2 12h7"/><path d="M11 5a2 2 0 0 1 0-4M17 19a2 2 0 0 1 0 4"/>'},
+    {key:'meters',value:'meters',icon:'<circle cx="12" cy="14" r="8"/><line x1="12" y1="14" x2="12" y2="8"/><line x1="8" y1="3" x2="16" y2="3"/>'},
+    {key:'prep',value:'prep',icon:'<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>'},
+    {key:'coord',value:'coord',icon:'<path d="M14.7 6.3a4 4 0 0 1-4 4L3 18a2 2 0 0 0 3 3l7.7-7.7a4 4 0 0 1 4-4L21 6l-2-2-4.3 4.3z"/>'}
+  ],
+  garden:[
+    {key:'water',value:'water',icon:'<path d="M12 3s6 6 6 11a6 6 0 0 1-12 0c0-5 6-11 6-11z"/>'},
+    {key:'weed',value:'weed',icon:'<path d="M12 22v-8"/><path d="M12 14c-3 0-5-2-5-5 3 0 5 2 5 5z"/><path d="M12 14c3 0 5-2 5-5-3 0-5 2-5 5z"/>'},
+    {key:'lawn',value:'lawn',icon:'<path d="M3 20h18M5 20v-4M9 20v-6M13 20v-4M17 20v-6M21 20v-4"/>'}
+  ],
+  pool:[
+    {key:'chem',value:'pool-chem',icon:'<path d="M9 3h6v4l3 12a2 2 0 0 1-2 3H8a2 2 0 0 1-2-3L9 7V3z"/>'},
+    {key:'clean',value:'pool-clean',icon:'<path d="M3 3l18 18M3 21l18-18"/>'},
+    {key:'equip',value:'pool-equip',icon:'<circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/>'}
+  ],
+  garage:[
+    {key:'garage',value:'garage',icon:'<path d="M3 21V9l9-6 9 6v12"/><path d="M7 21V13h10v8"/>'},
+    {key:'land',value:'land',icon:'<path d="M3 20h18M5 20V12M9 20V10M13 20V12M17 20V10M21 20V12"/>'},
+    {key:'security',value:'security',icon:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>'}
+  ]
+};
+
+function renderSubservices(){
+  const container=document.getElementById('subservicesContainer');
+  const list=SUBSERVICES[activeTab]||[];
+  const state=servicesState[activeTab];
+  container.innerHTML='<div class="subservices-grid">'+list.map(item=>{
+    const active=state.has(item.value)?'active':'';
+    const label=I18N[currentLang]['s3.'+activeTab+'.'+item.key]||item.key;
+    return `<div class="subservice-card ${active}" data-value="${item.value}">
+      <svg viewBox="0 0 24 24">${item.icon}</svg>
+      <span>${label}</span>
+    </div>`;
+  }).join('')+'</div>';
+  container.querySelectorAll('.subservice-card').forEach(card=>{
+    card.addEventListener('click',()=>{
+      const value=card.dataset.value;
+      if(state.has(value)){state.delete(value);card.classList.remove('active');}
+      else{state.add(value);card.classList.add('active');}
+      updateTabDots();
+      updateNextButton();
+    });
+  });
+}
+
+function updateTabDots(){
+  document.querySelectorAll('.service-tab').forEach(tab=>{
+    const tabName=tab.dataset.tab;
+    if(servicesState[tabName].size>0) tab.classList.add('has-selection');
+    else tab.classList.remove('has-selection');
+  });
+}
+
+document.querySelectorAll('.service-tab').forEach(tab=>{
+  tab.addEventListener('click',()=>{
+    document.querySelectorAll('.service-tab').forEach(t=>t.classList.remove('active'));
+    tab.classList.add('active');
+    activeTab=tab.dataset.tab;
+    renderSubservices();
+  });
+});
+
+/* ============ ШАГ 4 ============ */
+let contactMethod='email';
+document.querySelectorAll('#contactTabs .contact-tab').forEach(tab=>{
+  tab.addEventListener('click',()=>{
+    document.querySelectorAll('#contactTabs .contact-tab').forEach(t=>t.classList.remove('active'));
+    tab.classList.add('active');
+    contactMethod=tab.dataset.value;
+    document.getElementById('fg-email').style.display=contactMethod==='email'?'block':'none';
+    document.getElementById('fg-phone').style.display=contactMethod!=='email'?'block':'none';
+    updateNextButton();
+  });
+});
+
+['email','phone','name','agree'].forEach(id=>{
+  const el=document.getElementById(id);
+  if(el){el.addEventListener('input',updateNextButton);el.addEventListener('change',updateNextButton);}
+});
+
+/* ============ КАРТА ============ */
+let map=null,currentMarker=null;
+
+function imgToLeaflet(pt){return [IMG_H-pt[1],pt[0]];}
+function boundsImg(){return L.latLngBounds([[0,0],[IMG_H,IMG_W]]);}
+
+function showMapError(container){
+  const old=container.querySelector('.map-error');
+  if(old) return;
+  const box=document.createElement('div');
+  box.className='map-error';
+  box.innerHTML=`<div class="icon">⚠️</div><div class="title">Map not loaded</div><div class="desc">File not found next to HTML.<br>Save the image as <code>tenerife-map.jpg</code> next to this file.</div>`;
+  container.appendChild(box);
+}
+
+function loadMapImage(idx){
+  const container=document.getElementById('leafletMap');
+  if(!container) return;
+  if(idx>=MAP_IMAGE_CANDIDATES.length){showMapError(container);return;}
+  const testImg=new Image();
+  testImg.onload=()=>initMapWithImage(MAP_IMAGE_CANDIDATES[idx]);
+  testImg.onerror=()=>loadMapImage(idx+1);
+  testImg.src=MAP_IMAGE_CANDIDATES[idx];
+}
+
+function generateGridCanvas(){
+  const canvas=document.createElement('canvas');
+  canvas.width=IMG_W; canvas.height=IMG_H;
+  const ctx=canvas.getContext('2d');
+  if(typeof GRID_DATA==='undefined') return canvas.toDataURL('image/png');
+  for(let r=0;r<ROWS;r++){
+    for(let c=0;c<COLS;c++){
+      const val=GRID_DATA[r][c];
+      if(val>0){
+        ctx.fillStyle=val===1?'rgba(76,160,80,0.10)':val===2?'rgba(224,180,40,0.10)':'rgba(224,96,64,0.10)';
+        ctx.fillRect(c*CELL_W,r*CELL_H,CELL_W,CELL_H);
+        ctx.strokeStyle=val===1?'rgba(46,125,50,0.3)':val===2?'rgba(184,134,11,0.3)':'rgba(192,57,43,0.3)';
+        ctx.lineWidth=0.5;
+        ctx.strokeRect(c*CELL_W+0.25,r*CELL_H+0.25,CELL_W-0.5,CELL_H-0.5);
+      }
+    }
+  }
+  return canvas.toDataURL('image/png');
+}
+
+function initMapWithImage(imageSrc){
+  const container=document.getElementById('leafletMap');
+  const oldErr=container.querySelector('.map-error');
+  if(oldErr) oldErr.remove();
+  if(map){try{map.remove();}catch(e){}map=null;}
+  currentMarker=null;
+
+  map=L.map('leafletMap',{
+    crs:L.CRS.Simple,minZoom:-5,maxZoom:5,zoomSnap:0.25,
+    zoomControl:true,attributionControl:false,doubleClickZoom:false,
+    maxBoundsViscosity:1.0
+  });
+  const b=boundsImg();
+  L.imageOverlay(imageSrc,b,{opacity:1,interactive:false}).addTo(map);
+  map.fitBounds(b,{padding:[0,0]});
+  const minZ=map.getBoundsZoom(b,false);
+  const maxZ=minZ+1.6;
+  map.setMinZoom(minZ); map.setMaxZoom(maxZ); map.setMaxBounds(b.pad(0.1));
+  if(map.getZoom()<minZ) map.setZoom(minZ,{animate:false});
+
+  if(typeof GRID_DATA!=='undefined'){
+    L.imageOverlay(generateGridCanvas(),b,{opacity:1,interactive:false}).addTo(map);
+  }
+
+  map.on('click',e=>{
+    const x=e.latlng.lng;
+    const y=IMG_H-e.latlng.lat;
+    const c=Math.floor(x/CELL_W);
+    const r=Math.floor(y/CELL_H);
+    if(r<0||r>=ROWS||c<0||c>=COLS) return;
+    if(typeof GRID_DATA==='undefined') return;
+    const val=GRID_DATA[r][c];
+    if(val===0) return;
+    if(currentMarker){map.removeLayer(currentMarker);currentMarker=null;}
+    const cx=(c+0.5)*CELL_W;
+    const cy=(r+0.5)*CELL_H;
+    currentMarker=L.circleMarker([IMG_H-cy,cx],{radius:7,color:'#fff',weight:2.5,fillColor:'#0d5c63',fillOpacity:1}).addTo(map);
+    selectedZoneInfo={center:[cx,cy],tier:val===1?'A':val===2?'B':'C',town:nearestTown([cx,cy])};
+    renderZoneRow(selectedZoneInfo);
+  });
+
+  map.on('resize',()=>{
+    map.invalidateSize();
+    const mz=map.getBoundsZoom(b,false);
+    map.setMinZoom(mz); map.setMaxZoom(mz+1.6); map.setMaxBounds(b.pad(0.1));
+  });
+}
+
+function renderZoneRow(info){
+  document.getElementById('mapSelectedPlace').textContent=info.town;
+  const tierEl=document.getElementById('mapSelectedTier');
+  tierEl.textContent=I18N[currentLang]['zone.tier.'+info.tier];
+  tierEl.className='tier '+info.tier;
+  document.getElementById('mapSelected').classList.add('show');
+  document.getElementById('address').value=info.town;
+  document.getElementById('zoneTier').value=info.tier;
+  zoneSelected=true;
+  updateNextButton();
+}
+
+/* ============ MODAL ============ */
+document.getElementById('menuToggle').addEventListener('click',()=>{
+  document.getElementById('mainNav').classList.toggle('open');
+});
+
+function openModal(){
+  document.getElementById('modal').classList.add('open');
+  document.body.style.overflow='hidden';
+  currentStep=1;
+  updateUI();
+  setTimeout(()=>{
+    if(!map) loadMapImage(0);
+    else{
+      map.invalidateSize();
+      const b=boundsImg();
+      map.fitBounds(b,{padding:[0,0]});
+      const mz=map.getBoundsZoom(b,false);
+      map.setMinZoom(mz); map.setMaxZoom(mz+1.6);
+    }
+  },120);
+}
+function closeModal(){
+  document.getElementById('modal').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.getElementById('modal').addEventListener('click',(e)=>{
+  if(e.target.id==='modal') closeModal();
+});
+
+function updateUI(){
+  document.querySelectorAll('.step-panel').forEach(p=>p.classList.remove('active'));
+  const panel=document.querySelector(`.step-panel[data-step="${currentStep}"]`);
+  if(panel) panel.classList.add('active');
+  document.querySelectorAll('.progress-dot').forEach(dot=>{
+    const s=parseInt(dot.dataset.step);
+    dot.classList.remove('active','done');
+    if(s===currentStep) dot.classList.add('active');
+    else if(s<currentStep) dot.classList.add('done');
+  });
+  updateModalTitle();
+  const body=document.getElementById('modalBody');
+  if(body) body.scrollTop=0;
+  const btnPrev=document.getElementById('btnPrev');
+  const btnNext=document.getElementById('btnNext');
+  const footer=document.getElementById('modalFooter');
+  if(currentStep==='success'){footer.style.display='none';return;}
+  footer.style.display='flex';
+  if(currentStep===1) btnPrev.classList.add('is-hidden');
+  else btnPrev.classList.remove('is-hidden');
+  if(currentStep===3) renderSubservices();
+  updateNextButton();
+}
+
+function updateNextButton(){
+  const btnNext=document.getElementById('btnNext');
+  if(!btnNext||currentStep==='success') return;
+  let enabled=false;
+  if(currentStep===1) enabled=zoneSelected;
+  else if(currentStep===2) enabled=!!selectedObjType&&!!selectedVacancy;
+  else if(currentStep===3) enabled=Object.values(servicesState).some(s=>s.size>0);
+  else if(currentStep===4){
+    const emailOk=contactMethod==='email'&&/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(document.getElementById('email').value.trim());
+    const phoneOk=contactMethod!=='email'&&document.getElementById('phone').value.trim().length>0;
+    const nameOk=document.getElementById('name').value.trim().length>0;
+    const agreeOk=document.getElementById('agree').checked;
+    enabled=(emailOk||phoneOk)&&nameOk&&agreeOk;
+  }
+  btnNext.disabled=!enabled;
+}
+
+function validateStep(step){
+  if(step===1) return zoneSelected;
+  if(step===2) return !!selectedObjType&&!!selectedVacancy;
+  if(step===3) return Object.values(servicesState).some(s=>s.size>0);
+  if(step===4){
+    const name=document.getElementById('name');
+    const agree=document.getElementById('agree');
+    const email=document.getElementById('email');
+    const phone=document.getElementById('phone');
+    ['fg-name','fg-email','fg-phone','fg-agree'].forEach(id=>document.getElementById(id).classList.remove('has-error'));
+    let ok=true;
+    if(contactMethod==='email'){
+      if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())){document.getElementById('fg-email').classList.add('has-error');ok=false;}
+    }else{
+      if(!phone.value.trim()){document.getElementById('fg-phone').classList.add('has-error');ok=false;}
+    }
+    if(!name.value.trim()){document.getElementById('fg-name').classList.add('has-error');ok=false;}
+    if(!agree.checked){document.getElementById('fg-agree').classList.add('has-error');ok=false;}
+    return ok;
+  }
+  return true;
+}
+
+function nextStep(){
+  if(!validateStep(currentStep)) return;
+  if(currentStep===totalSteps){
+    const data=collectData();
+    console.log('MOCK SUBMIT',data);
+    renderSuccessButtons(data);
+    currentStep='success';
+    updateUI();
+    return;
+  }
+  currentStep++;
+  updateUI();
+}
+function prevStep(){if(currentStep>1){currentStep--;updateUI();}}
+
+function collectData(){
+  const allServices=[];
+  Object.keys(servicesState).forEach(group=>{
+    servicesState[group].forEach(v=>allServices.push(v));
+  });
+  return {
+    objectType:selectedObjType,vacancy:selectedVacancy,
+    town:document.getElementById('address').value,
+    tier:document.getElementById('zoneTier').value,
+    zoneCenter:selectedZoneInfo?selectedZoneInfo.center:null,
+    services:allServices,
+    contactMethod:contactMethod,
+    email:contactMethod==='email'?document.getElementById('email').value:'',
+    phone:contactMethod!=='email'?document.getElementById('phone').value:'',
+    name:document.getElementById('name').value,
+    agree:document.getElementById('agree').checked,
+    lang:currentLang
+  };
+}
+
+/* ============ SUCCESS — кнопки копии ============ */
+function renderSuccessButtons(data){
+  const cfg=window.APP_CONFIG||{};
+  const lines=[
+    (currentLang==='ru'?'Заявка Dom Tenerife':currentLang==='es'?'Solicitud Dom Tenerife':'Dom Tenerife request'),
+    '·',
+    (currentLang==='ru'?'Город':currentLang==='es'?'Ciudad':'Town')+': '+(data.town||'—'),
+    (currentLang==='ru'?'Зона':currentLang==='es'?'Zona':'Zone')+': '+(data.tier||'—'),
+    (currentLang==='ru'?'Тип':currentLang==='es'?'Tipo':'Type')+': '+(data.objectType||'—'),
+    (currentLang==='ru'?'Услуги':currentLang==='es'?'Servicios':'Services')+': '+(data.services&&data.services.length?data.services.join(', '):'—'),
+    (currentLang==='ru'?'Имя':currentLang==='es'?'Nombre':'Name')+': '+(data.name||'—')
+  ];
+  const summary=lines.join('\n');
+  const wa=document.getElementById('waCopyBtn');
+  if(wa&&cfg.whatsappNumber){
+    wa.href='https://wa.me/'+cfg.whatsappNumber+'?text='+encodeURIComponent(summary);
+    wa.style.display='flex';
+  }
+  const tg=document.getElementById('tgCopyBtn');
+  if(tg&&cfg.telegramUser){
+    tg.href='https://t.me/'+cfg.telegramUser;
+    tg.style.display='flex';
+  }
+}
+
+/* ============ INIT ============ */
+document.addEventListener('DOMContentLoaded',()=>{
+  const pathLang=(location.pathname.match(/^\/(ru|en|es)(\/|$)/)||[])[1];
+  const browserLang=(navigator.language||'').slice(0,2).toLowerCase();
+  const stored=localStorage.getItem('lang');
+  const initial=pathLang||stored||(['ru','en','es'].includes(browserLang)?browserLang:'en');
+  setLang(initial);
+});
+</script>
+</body>
+</html>

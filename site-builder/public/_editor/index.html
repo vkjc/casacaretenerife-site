@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Site Builder</title>
+  <link rel="stylesheet" href="editor.css">
+  <style id="basecss"></style>
+  <style id="docstyle"></style>
+</head>
+<body>
+  <header id="bar">
+    <button id="back" title="Вернуться на предыдущую страницу" hidden>← Назад</button>
+    <select id="pages" title="Страница или окно"></select>
+    <button id="page-add" title="Новая страница">＋</button>
+    <button id="modal-add" title="Новое модальное окно">＋🗔</button>
+    <button id="page-del" title="Удалить страницу или окно">🗑</button>
+    <input id="title" title="Заголовок страницы" placeholder="Заголовок">
+    <span class="sep"></span>
+    <button id="dev-d" class="on" title="Десктоп">🖥</button>
+    <button id="dev-m" title="Мобильный">📱</button>
+    <select id="lang" title="Язык редактирования и превью (LTR/RTL)"></select>
+    <select id="uilang" title="Язык интерфейса"></select>
+    <span class="sep"></span>
+    <button id="libtoggle" title="Библиотека медиа (левая панель)" aria-controls="lib" aria-expanded="false">Медиа</button>
+    <button id="undo" title="Отменить (Ctrl+Z)">↶</button>
+    <button id="redo" title="Повторить (Ctrl+Shift+Z)">↷</button>
+    <button id="add" title="Добавить блок в выбранную сетку">＋ Блок</button>
+    <button id="tr" title="Таблица переводов страницы">🌐 Переводы</button>
+    <button id="history" title="История версий">🕘</button>
+    <button id="subs" title="Заявки с форм">📥</button>
+    <button id="settings" title="Настройки сайта">⚙</button>
+    <span class="grow"></span>
+    <span id="status"></span>
+    <button id="preview">Просмотр</button>
+    <button id="publish" class="main">Опубликовать</button>
+  </header>
+
+  <div id="main">
+    <aside id="lib" hidden>
+      <button id="lib-rail" class="lib-rail" type="button" title="Открыть библиотеку медиа" aria-label="Открыть библиотеку медиа">
+        <span aria-hidden="true">▤</span><span>Медиа</span>
+      </button>
+      <div id="lib-content"></div>
+    </aside>
+    <div id="stage"><div id="canvas" class="pg ed"></div></div>
+    <aside id="insp"></aside>
+  </div>
+
+  <div id="ctx" hidden></div>
+  <div id="tipcard" hidden></div>
+  <div id="modal" hidden></div>
+  <input id="upfile" type="file" accept="image/*,video/mp4,video/webm" multiple hidden>
+
+  <div id="login">
+    <form id="login-form">
+      <h1>Site Builder</h1>
+      <input id="token" type="password" placeholder="ADMIN_TOKEN" autocomplete="current-password">
+      <button class="main">Войти</button>
+      <p id="login-err"></p>
+    </form>
+  </div>
+
+  <script src="ui.js"></script>
+  <script src="render.js"></script>
+  <script src="editor.js"></script>
+</body>
+</html>
